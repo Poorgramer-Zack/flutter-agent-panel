@@ -16,64 +16,55 @@ import 'terminal_view_test.mocks.dart';
 void main() {
   final binding = TestWidgetsFlutterBinding.ensureInitialized();
 
-  testWidgets(
-    'htop golden test',
-    (tester) async {
-      final terminal = Terminal();
-      await tester.pumpWidget(MaterialApp(
+  testWidgets('htop golden test', (tester) async {
+    final terminal = Terminal();
+    await tester.pumpWidget(
+      MaterialApp(home: Scaffold(body: TerminalView(terminal))),
+    );
+
+    terminal.write(TestFixtures.htop_80x25_3s());
+    await tester.pump();
+
+    await expectLater(
+      find.byType(TerminalView),
+      matchesGoldenFile('_goldens/htop_80x25_3s.png'),
+    );
+  }, skip: !Platform.isMacOS);
+
+  testWidgets('color golden test', (tester) async {
+    final terminal = Terminal();
+
+    // terminal.lineFeedMode = true;
+
+    await tester.pumpWidget(
+      MaterialApp(
         home: Scaffold(
-          body: TerminalView(terminal),
+          body: TerminalView(terminal, textStyle: TerminalStyle(fontSize: 8)),
         ),
-      ));
+      ),
+    );
 
-      terminal.write(TestFixtures.htop_80x25_3s());
-      await tester.pump();
+    terminal.write(TestFixtures.colors().replaceAll('\n', '\r\n'));
+    await tester.pump();
 
-      await expectLater(
-        find.byType(TerminalView),
-        matchesGoldenFile('_goldens/htop_80x25_3s.png'),
-      );
-    },
-    skip: !Platform.isMacOS,
-  );
-
-  testWidgets(
-    'color golden test',
-    (tester) async {
-      final terminal = Terminal();
-
-      // terminal.lineFeedMode = true;
-
-      await tester.pumpWidget(MaterialApp(
-        home: Scaffold(
-          body: TerminalView(
-            terminal,
-            textStyle: TerminalStyle(fontSize: 8),
-          ),
-        ),
-      ));
-
-      terminal.write(TestFixtures.colors().replaceAll('\n', '\r\n'));
-      await tester.pump();
-
-      await expectLater(
-        find.byType(TerminalView),
-        matchesGoldenFile('_goldens/colors.png'),
-      );
-    },
-    skip: !Platform.isMacOS,
-  );
+    await expectLater(
+      find.byType(TerminalView),
+      matchesGoldenFile('_goldens/colors.png'),
+    );
+  }, skip: !Platform.isMacOS);
 
   group('TerminalView.readOnly', () {
     testWidgets('works', (tester) async {
       final terminalOutput = <String>[];
       final terminal = Terminal(onOutput: terminalOutput.add);
 
-      await tester.pumpWidget(MaterialApp(
-        home: Scaffold(
-          body: TerminalView(terminal, readOnly: true, autofocus: true),
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: TerminalView(terminal, readOnly: true, autofocus: true),
+          ),
         ),
-      ));
+      );
 
       // https://github.com/flutter/flutter/issues/11181#issuecomment-314936646
       await tester.tap(find.byType(TerminalView));
@@ -89,11 +80,13 @@ void main() {
       final terminalOutput = <String>[];
       final terminal = Terminal(onOutput: terminalOutput.add);
 
-      await tester.pumpWidget(MaterialApp(
-        home: Scaffold(
-          body: TerminalView(terminal, readOnly: false, autofocus: true),
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: TerminalView(terminal, readOnly: false, autofocus: true),
+          ),
         ),
-      ));
+      );
 
       // https://github.com/flutter/flutter/issues/11181#issuecomment-314936646
       await tester.tap(find.byType(TerminalView));
@@ -114,23 +107,25 @@ void main() {
 
       final isActive = ValueNotifier(true);
 
-      await tester.pumpWidget(MaterialApp(
-        home: Scaffold(
-          body: ValueListenableBuilder<bool>(
-            valueListenable: isActive,
-            builder: (context, isActive, child) {
-              if (!isActive) {
-                return Container();
-              }
-              return TerminalView(
-                terminal,
-                focusNode: focusNode,
-                autofocus: true,
-              );
-            },
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: ValueListenableBuilder<bool>(
+              valueListenable: isActive,
+              builder: (context, isActive, child) {
+                if (!isActive) {
+                  return Container();
+                }
+                return TerminalView(
+                  terminal,
+                  focusNode: focusNode,
+                  autofocus: true,
+                );
+              },
+            ),
           ),
         ),
-      ));
+      );
 
       // ignore: invalid_use_of_protected_member
       expect(focusNode.hasListeners, isTrue);
@@ -149,23 +144,25 @@ void main() {
 
       final isActive = ValueNotifier(true);
 
-      await tester.pumpWidget(MaterialApp(
-        home: Scaffold(
-          body: ValueListenableBuilder<bool>(
-            valueListenable: isActive,
-            builder: (context, isActive, child) {
-              if (!isActive) {
-                return Container();
-              }
-              return TerminalView(
-                terminal,
-                focusNode: focusNode,
-                autofocus: true,
-              );
-            },
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: ValueListenableBuilder<bool>(
+              valueListenable: isActive,
+              builder: (context, isActive, child) {
+                if (!isActive) {
+                  return Container();
+                }
+                return TerminalView(
+                  terminal,
+                  focusNode: focusNode,
+                  autofocus: true,
+                );
+              },
+            ),
           ),
         ),
-      ));
+      );
 
       isActive.value = false;
       await tester.pumpAndSettle();
@@ -190,10 +187,7 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
-            body: TerminalView(
-              terminal,
-              controller: terminalView,
-            ),
+            body: TerminalView(terminal, controller: terminalView),
           ),
         ),
       );
@@ -222,10 +216,7 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
-            body: TerminalView(
-              terminal,
-              controller: terminalView,
-            ),
+            body: TerminalView(terminal, controller: terminalView),
           ),
         ),
       );
@@ -248,11 +239,7 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
-            body: TerminalView(
-              terminal,
-              autofocus: true,
-              focusNode: focusNode,
-            ),
+            body: TerminalView(terminal, autofocus: true, focusNode: focusNode),
           ),
         ),
       );
@@ -318,10 +305,7 @@ void main() {
             body: ValueListenableBuilder<TextScaler>(
               valueListenable: textScaler,
               builder: (context, textScaler, child) {
-                return TerminalView(
-                  terminal,
-                  textScaler: textScaler,
-                );
+                return TerminalView(terminal, textScaler: textScaler);
               },
             ),
           ),
@@ -353,9 +337,7 @@ void main() {
           home: Scaffold(
             body: MediaQuery(
               data: const MediaQueryData(textScaler: TextScaler.linear(2.0)),
-              child: TerminalView(
-                terminal,
-              ),
+              child: TerminalView(terminal),
             ),
           ),
         ),
@@ -376,9 +358,9 @@ void main() {
       final terminalOutput = <String>[];
       final terminal = Terminal(onOutput: terminalOutput.add);
 
-      await tester.pumpWidget(MaterialApp(
-        home: TerminalView(terminal, autofocus: true),
-      ));
+      await tester.pumpWidget(
+        MaterialApp(home: TerminalView(terminal, autofocus: true)),
+      );
 
       await tester.tap(find.byType(TerminalView));
       await tester.pump(Duration(seconds: 1));
@@ -403,9 +385,9 @@ void main() {
         onOutput: terminalOutput.add,
       );
 
-      await tester.pumpWidget(MaterialApp(
-        home: TerminalView(terminal, autofocus: true),
-      ));
+      await tester.pumpWidget(
+        MaterialApp(home: TerminalView(terminal, autofocus: true)),
+      );
 
       await tester.tap(find.byType(TerminalView));
       await tester.pump(Duration(seconds: 1));
@@ -426,9 +408,11 @@ void main() {
       final terminal = Terminal(onOutput: terminalOutput.add);
       terminal.useAltBuffer();
 
-      await tester.pumpWidget(MaterialApp(
-        home: TerminalView(terminal, autofocus: true, simulateScroll: true),
-      ));
+      await tester.pumpWidget(
+        MaterialApp(
+          home: TerminalView(terminal, autofocus: true, simulateScroll: true),
+        ),
+      );
 
       await tester.drag(find.byType(TerminalView), const Offset(0, -100));
 
@@ -440,9 +424,11 @@ void main() {
       final terminal = Terminal(onOutput: terminalOutput.add);
       terminal.useAltBuffer();
 
-      await tester.pumpWidget(MaterialApp(
-        home: TerminalView(terminal, autofocus: true, simulateScroll: false),
-      ));
+      await tester.pumpWidget(
+        MaterialApp(
+          home: TerminalView(terminal, autofocus: true, simulateScroll: false),
+        ),
+      );
 
       await tester.drag(find.byType(TerminalView), const Offset(0, -100));
 

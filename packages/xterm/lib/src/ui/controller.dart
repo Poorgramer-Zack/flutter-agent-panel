@@ -14,9 +14,9 @@ class TerminalController with ChangeNotifier {
     SelectionMode selectionMode = SelectionMode.line,
     PointerInputs pointerInputs = const PointerInputs({PointerInput.tap}),
     bool suspendPointerInput = false,
-  })  : _selectionMode = selectionMode,
-        _pointerInputs = pointerInputs,
-        _suspendPointerInputs = suspendPointerInput;
+  }) : _selectionMode = selectionMode,
+       _pointerInputs = pointerInputs,
+       _suspendPointerInputs = suspendPointerInput;
 
   CellAnchor? _selectionBase;
   CellAnchor? _selectionExtent;
@@ -128,12 +128,7 @@ class TerminalController with ChangeNotifier {
     required CellAnchor p2,
     required Color color,
   }) {
-    final highlight = TerminalHighlight(
-      this,
-      p1: p1,
-      p2: p2,
-      color: color,
-    );
+    final highlight = TerminalHighlight(this, p1: p1, p2: p2, color: color);
 
     _highlights.add(highlight);
     notifyListeners();

@@ -124,10 +124,7 @@ class _TerminalScrollGestureHandlerState
       onPointerDown: (event) {
         lastPointerPosition = event.position;
       },
-      child: InfiniteScrollView(
-        onScroll: _onScroll,
-        child: widget.child,
-      ),
+      child: InfiniteScrollView(onScroll: _onScroll, child: widget.child),
     );
   }
 }

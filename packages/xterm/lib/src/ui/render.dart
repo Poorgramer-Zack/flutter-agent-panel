@@ -35,21 +35,21 @@ class RenderTerminal extends RenderBox with RelayoutWhenSystemFontsChangeMixin {
     required bool alwaysShowCursor,
     EditableRectCallback? onEditableRect,
     String? composingText,
-  })  : _terminal = terminal,
-        _controller = controller,
-        _offset = offset,
-        _padding = padding,
-        _autoResize = autoResize,
-        _focusNode = focusNode,
-        _cursorType = cursorType,
-        _alwaysShowCursor = alwaysShowCursor,
-        _onEditableRect = onEditableRect,
-        _composingText = composingText,
-        _painter = TerminalPainter(
-          theme: theme,
-          textStyle: textStyle,
-          textScaler: textScaler,
-        );
+  }) : _terminal = terminal,
+       _controller = controller,
+       _offset = offset,
+       _padding = padding,
+       _autoResize = autoResize,
+       _focusNode = focusNode,
+       _cursorType = cursorType,
+       _alwaysShowCursor = alwaysShowCursor,
+       _onEditableRect = onEditableRect,
+       _composingText = composingText,
+       _painter = TerminalPainter(
+         theme: theme,
+         textStyle: textStyle,
+         textScaler: textScaler,
+       );
 
   // Cursor blink state
   bool _cursorVisible = true;
@@ -496,11 +496,7 @@ class RenderTerminal extends RenderBox with RelayoutWhenSystemFontsChangeMixin {
     final baseY = _lineOffset.floorToDouble();
     for (var i = effectFirstLine; i <= effectLastLine; i++) {
       final lineY = (baseY + i * charHeight).floorToDouble();
-      _painter.paintLine(
-        canvas,
-        offset.translate(0, lineY),
-        lines[i],
-      );
+      _painter.paintLine(canvas, offset.translate(0, lineY), lines[i]);
     }
 
     if (_terminal.buffer.absoluteCursorY >= effectFirstLine &&

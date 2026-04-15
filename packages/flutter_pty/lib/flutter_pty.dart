@@ -68,7 +68,7 @@ class Pty {
       'DISPLAY',
       'LC_TYPE',
       'HOME',
-      'PATH'
+      'PATH',
     };
 
     for (var entry in Platform.environment.entries) {

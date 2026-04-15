@@ -7,7 +7,7 @@ import 'package:quiver/collection.dart';
 /// text multiple times, which is expensive.
 class ParagraphCache {
   ParagraphCache(int maximumSize)
-      : _cache = LruMap<int, Paragraph>(maximumSize: maximumSize);
+    : _cache = LruMap<int, Paragraph>(maximumSize: maximumSize);
 
   final LruMap<int, Paragraph> _cache;
 

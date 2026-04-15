@@ -1,7 +1,1 @@
-enum TerminalCursorType {
-  block,
-
-  underline,
-
-  verticalBar,
-}
+enum TerminalCursorType { block, underline, verticalBar }

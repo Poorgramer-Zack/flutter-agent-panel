@@ -1,10 +1,7 @@
 import 'package:xterm/src/core/input/keys.dart';
 import 'package:xterm/src/core/input/keytab/keytab_escape.dart';
 
-enum KeytabActionType {
-  input,
-  shortcut,
-}
+enum KeytabActionType { input, shortcut }
 
 class KeytabAction {
   KeytabAction(this.type, this.value);

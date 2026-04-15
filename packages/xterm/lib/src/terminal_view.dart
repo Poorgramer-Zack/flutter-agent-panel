@@ -253,8 +253,10 @@ class TerminalViewState extends State<TerminalView> {
       targetOffset = (line - viewHeight + 1) * lineHeight;
     }
 
-    targetOffset =
-        targetOffset.clamp(0.0, _scrollController.position.maxScrollExtent);
+    targetOffset = targetOffset.clamp(
+      0.0,
+      _scrollController.position.maxScrollExtent,
+    );
 
     _scrollController.jumpTo(targetOffset);
   }
@@ -353,28 +355,24 @@ class TerminalViewState extends State<TerminalView> {
       child: child,
     );
 
-    child = KeyboardVisibilty(
-      onKeyboardShow: _onKeyboardShow,
-      child: child,
-    );
+    child = KeyboardVisibilty(onKeyboardShow: _onKeyboardShow, child: child);
 
     child = TerminalGestureHandler(
       terminalView: this,
       terminalController: _controller,
       onTapUp: _onTapUp,
       onTapDown: _onTapDown,
-      onSecondaryTapDown:
-          widget.onSecondaryTapDown != null ? _onSecondaryTapDown : null,
-      onSecondaryTapUp:
-          widget.onSecondaryTapUp != null ? _onSecondaryTapUp : null,
+      onSecondaryTapDown: widget.onSecondaryTapDown != null
+          ? _onSecondaryTapDown
+          : null,
+      onSecondaryTapUp: widget.onSecondaryTapUp != null
+          ? _onSecondaryTapUp
+          : null,
       readOnly: widget.readOnly,
       child: child,
     );
 
-    child = MouseRegion(
-      cursor: widget.mouseCursor,
-      child: child,
-    );
+    child = MouseRegion(cursor: widget.mouseCursor, child: child);
 
     child = Container(
       color: widget.theme.background.withOpacity(widget.backgroundOpacity),

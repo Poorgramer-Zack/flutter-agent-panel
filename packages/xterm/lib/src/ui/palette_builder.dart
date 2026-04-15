@@ -8,11 +8,7 @@ class PaletteBuilder {
   PaletteBuilder(this.theme);
 
   List<Color> build() {
-    return List<Color>.generate(
-      256,
-      paletteColor,
-      growable: false,
-    );
+    return List<Color>.generate(256, paletteColor, growable: false);
   }
 
   /// https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit

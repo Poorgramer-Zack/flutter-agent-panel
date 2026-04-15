@@ -40,10 +40,7 @@ class TerminalSearchOptions {
     this.useRegex = false,
   });
 
-  TerminalSearchOptions copyWith({
-    bool? caseSensitive,
-    bool? useRegex,
-  }) {
+  TerminalSearchOptions copyWith({bool? caseSensitive, bool? useRegex}) {
     return TerminalSearchOptions(
       caseSensitive: caseSensitive ?? this.caseSensitive,
       useRegex: useRegex ?? this.useRegex,
@@ -211,11 +208,13 @@ class TerminalSearchController extends ChangeNotifier {
           final startX = _getVisualPosition(line, match.start);
           final endX = _getVisualPosition(line, match.end);
 
-          newMatches.add(TerminalSearchMatch(
-            start: CellOffset(startX, lineIndex),
-            end: CellOffset(endX, lineIndex),
-            text: match.group(0) ?? '',
-          ));
+          newMatches.add(
+            TerminalSearchMatch(
+              start: CellOffset(startX, lineIndex),
+              end: CellOffset(endX, lineIndex),
+              text: match.group(0) ?? '',
+            ),
+          );
         }
       }
     } catch (e) {
@@ -313,8 +312,9 @@ class TerminalSearchController extends ChangeNotifier {
       // Use semi-transparent colors so the underlying text remains visible
       // in both light and dark themes.
       final color = isCurrent
-          ? const Color(0xFF31FF26)
-              .withValues(alpha: 0.5) // bright green with alpha
+          ? const Color(0xFF31FF26).withValues(
+              alpha: 0.5,
+            ) // bright green with alpha
           : const Color(0xFFFFFF2B).withValues(alpha: 0.5); // yellow with alpha
 
       final highlight = terminalController.highlight(
