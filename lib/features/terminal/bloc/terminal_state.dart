@@ -36,9 +36,9 @@ class TerminalState extends Equatable {
 
   @override
   List<Object?> get props => [
-        terminals.keys.toList(),
-        restartingIds,
-        pendingIds,
-        errorMessage,
-      ];
+    terminals.keys.toList(),
+    restartingIds,
+    pendingIds,
+    errorMessage,
+  ];
 }

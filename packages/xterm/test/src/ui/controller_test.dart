@@ -8,14 +8,13 @@ void main() {
       final terminal = Terminal();
       final terminalView = TerminalController();
 
-      await tester.pumpWidget(MaterialApp(
-        home: Scaffold(
-          body: TerminalView(
-            terminal,
-            controller: terminalView,
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: TerminalView(terminal, controller: terminalView),
           ),
         ),
-      ));
+      );
 
       terminalView.setSelection(
         terminal.buffer.createAnchor(0, 0),
@@ -31,14 +30,13 @@ void main() {
       final terminal = Terminal();
       final terminalView = TerminalController();
 
-      await tester.pumpWidget(MaterialApp(
-        home: Scaffold(
-          body: TerminalView(
-            terminal,
-            controller: terminalView,
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: TerminalView(terminal, controller: terminalView),
           ),
         ),
-      ));
+      );
 
       terminalView.setSelection(
         terminal.buffer.createAnchor(0, 0),
@@ -56,14 +54,13 @@ void main() {
       final terminal = Terminal();
       final terminalView = TerminalController();
 
-      await tester.pumpWidget(MaterialApp(
-        home: Scaffold(
-          body: TerminalView(
-            terminal,
-            controller: terminalView,
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: TerminalView(terminal, controller: terminalView),
           ),
         ),
-      ));
+      );
 
       terminalView.setSelection(
         terminal.buffer.createAnchor(0, 0),

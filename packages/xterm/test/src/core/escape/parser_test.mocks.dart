@@ -24,847 +24,497 @@ import 'package:xterm/src/core/mouse/mode.dart' as _i3;
 class MockEscapeHandler extends _i1.Mock implements _i2.EscapeHandler {
   @override
   void writeChar(int? char) => super.noSuchMethod(
-        Invocation.method(
-          #writeChar,
-          [char],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#writeChar, [char]),
+    returnValueForMissingStub: null,
+  );
   @override
   void bell() => super.noSuchMethod(
-        Invocation.method(
-          #bell,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#bell, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void backspaceReturn() => super.noSuchMethod(
-        Invocation.method(
-          #backspaceReturn,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#backspaceReturn, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void tab() => super.noSuchMethod(
-        Invocation.method(
-          #tab,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#tab, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void lineFeed() => super.noSuchMethod(
-        Invocation.method(
-          #lineFeed,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#lineFeed, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void carriageReturn() => super.noSuchMethod(
-        Invocation.method(
-          #carriageReturn,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#carriageReturn, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void shiftOut() => super.noSuchMethod(
-        Invocation.method(
-          #shiftOut,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#shiftOut, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void shiftIn() => super.noSuchMethod(
-        Invocation.method(
-          #shiftIn,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#shiftIn, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void unknownSBC(int? char) => super.noSuchMethod(
-        Invocation.method(
-          #unknownSBC,
-          [char],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#unknownSBC, [char]),
+    returnValueForMissingStub: null,
+  );
   @override
   void saveCursor() => super.noSuchMethod(
-        Invocation.method(
-          #saveCursor,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#saveCursor, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void restoreCursor() => super.noSuchMethod(
-        Invocation.method(
-          #restoreCursor,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#restoreCursor, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void index() => super.noSuchMethod(
-        Invocation.method(
-          #index,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#index, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void nextLine() => super.noSuchMethod(
-        Invocation.method(
-          #nextLine,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#nextLine, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void setTapStop() => super.noSuchMethod(
-        Invocation.method(
-          #setTapStop,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#setTapStop, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void reverseIndex() => super.noSuchMethod(
-        Invocation.method(
-          #reverseIndex,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#reverseIndex, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void designateCharset(int? charset, int? name) => super.noSuchMethod(
-        Invocation.method(
-          #designateCharset,
-          [charset, name],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#designateCharset, [charset, name]),
+    returnValueForMissingStub: null,
+  );
   @override
   void unkownEscape(int? char) => super.noSuchMethod(
-        Invocation.method(
-          #unkownEscape,
-          [char],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#unkownEscape, [char]),
+    returnValueForMissingStub: null,
+  );
   @override
   void repeatPreviousCharacter(int? n) => super.noSuchMethod(
-        Invocation.method(
-          #repeatPreviousCharacter,
-          [n],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#repeatPreviousCharacter, [n]),
+    returnValueForMissingStub: null,
+  );
   @override
-  void setCursor(
-    int? x,
-    int? y,
-  ) =>
-      super.noSuchMethod(
-        Invocation.method(
-          #setCursor,
-          [
-            x,
-            y,
-          ],
-        ),
-        returnValueForMissingStub: null,
-      );
+  void setCursor(int? x, int? y) => super.noSuchMethod(
+    Invocation.method(#setCursor, [x, y]),
+    returnValueForMissingStub: null,
+  );
   @override
   void setCursorX(int? x) => super.noSuchMethod(
-        Invocation.method(
-          #setCursorX,
-          [x],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#setCursorX, [x]),
+    returnValueForMissingStub: null,
+  );
   @override
   void setCursorY(int? y) => super.noSuchMethod(
-        Invocation.method(
-          #setCursorY,
-          [y],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#setCursorY, [y]),
+    returnValueForMissingStub: null,
+  );
   @override
   void sendPrimaryDeviceAttributes() => super.noSuchMethod(
-        Invocation.method(
-          #sendPrimaryDeviceAttributes,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#sendPrimaryDeviceAttributes, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void clearTabStopUnderCursor() => super.noSuchMethod(
-        Invocation.method(
-          #clearTabStopUnderCursor,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#clearTabStopUnderCursor, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void clearAllTabStops() => super.noSuchMethod(
-        Invocation.method(
-          #clearAllTabStops,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#clearAllTabStops, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void moveCursorX(int? offset) => super.noSuchMethod(
-        Invocation.method(
-          #moveCursorX,
-          [offset],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#moveCursorX, [offset]),
+    returnValueForMissingStub: null,
+  );
   @override
   void moveCursorY(int? n) => super.noSuchMethod(
-        Invocation.method(
-          #moveCursorY,
-          [n],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#moveCursorY, [n]),
+    returnValueForMissingStub: null,
+  );
   @override
   void sendSecondaryDeviceAttributes() => super.noSuchMethod(
-        Invocation.method(
-          #sendSecondaryDeviceAttributes,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#sendSecondaryDeviceAttributes, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void sendTertiaryDeviceAttributes() => super.noSuchMethod(
-        Invocation.method(
-          #sendTertiaryDeviceAttributes,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#sendTertiaryDeviceAttributes, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void sendOperatingStatus() => super.noSuchMethod(
-        Invocation.method(
-          #sendOperatingStatus,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#sendOperatingStatus, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void sendCursorPosition() => super.noSuchMethod(
-        Invocation.method(
-          #sendCursorPosition,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#sendCursorPosition, []),
+    returnValueForMissingStub: null,
+  );
   @override
-  void setMargins(
-    int? i, [
-    int? bottom,
-  ]) =>
-      super.noSuchMethod(
-        Invocation.method(
-          #setMargins,
-          [
-            i,
-            bottom,
-          ],
-        ),
-        returnValueForMissingStub: null,
-      );
+  void setMargins(int? i, [int? bottom]) => super.noSuchMethod(
+    Invocation.method(#setMargins, [i, bottom]),
+    returnValueForMissingStub: null,
+  );
   @override
   void cursorNextLine(int? amount) => super.noSuchMethod(
-        Invocation.method(
-          #cursorNextLine,
-          [amount],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#cursorNextLine, [amount]),
+    returnValueForMissingStub: null,
+  );
   @override
   void cursorPrecedingLine(int? amount) => super.noSuchMethod(
-        Invocation.method(
-          #cursorPrecedingLine,
-          [amount],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#cursorPrecedingLine, [amount]),
+    returnValueForMissingStub: null,
+  );
   @override
   void eraseDisplayBelow() => super.noSuchMethod(
-        Invocation.method(
-          #eraseDisplayBelow,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#eraseDisplayBelow, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void eraseDisplayAbove() => super.noSuchMethod(
-        Invocation.method(
-          #eraseDisplayAbove,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#eraseDisplayAbove, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void eraseDisplay() => super.noSuchMethod(
-        Invocation.method(
-          #eraseDisplay,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#eraseDisplay, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void eraseScrollbackOnly() => super.noSuchMethod(
-        Invocation.method(
-          #eraseScrollbackOnly,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#eraseScrollbackOnly, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void eraseLineRight() => super.noSuchMethod(
-        Invocation.method(
-          #eraseLineRight,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#eraseLineRight, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void eraseLineLeft() => super.noSuchMethod(
-        Invocation.method(
-          #eraseLineLeft,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#eraseLineLeft, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void eraseLine() => super.noSuchMethod(
-        Invocation.method(
-          #eraseLine,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#eraseLine, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void insertLines(int? amount) => super.noSuchMethod(
-        Invocation.method(
-          #insertLines,
-          [amount],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#insertLines, [amount]),
+    returnValueForMissingStub: null,
+  );
   @override
   void deleteLines(int? amount) => super.noSuchMethod(
-        Invocation.method(
-          #deleteLines,
-          [amount],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#deleteLines, [amount]),
+    returnValueForMissingStub: null,
+  );
   @override
   void deleteChars(int? amount) => super.noSuchMethod(
-        Invocation.method(
-          #deleteChars,
-          [amount],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#deleteChars, [amount]),
+    returnValueForMissingStub: null,
+  );
   @override
   void scrollUp(int? amount) => super.noSuchMethod(
-        Invocation.method(
-          #scrollUp,
-          [amount],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#scrollUp, [amount]),
+    returnValueForMissingStub: null,
+  );
   @override
   void scrollDown(int? amount) => super.noSuchMethod(
-        Invocation.method(
-          #scrollDown,
-          [amount],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#scrollDown, [amount]),
+    returnValueForMissingStub: null,
+  );
   @override
   void eraseChars(int? amount) => super.noSuchMethod(
-        Invocation.method(
-          #eraseChars,
-          [amount],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#eraseChars, [amount]),
+    returnValueForMissingStub: null,
+  );
   @override
   void insertBlankChars(int? amount) => super.noSuchMethod(
-        Invocation.method(
-          #insertBlankChars,
-          [amount],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#insertBlankChars, [amount]),
+    returnValueForMissingStub: null,
+  );
   @override
   void unknownCSI(int? finalByte) => super.noSuchMethod(
-        Invocation.method(
-          #unknownCSI,
-          [finalByte],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#unknownCSI, [finalByte]),
+    returnValueForMissingStub: null,
+  );
   @override
   void setInsertMode(bool? enabled) => super.noSuchMethod(
-        Invocation.method(
-          #setInsertMode,
-          [enabled],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#setInsertMode, [enabled]),
+    returnValueForMissingStub: null,
+  );
   @override
   void setLineFeedMode(bool? enabled) => super.noSuchMethod(
-        Invocation.method(
-          #setLineFeedMode,
-          [enabled],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#setLineFeedMode, [enabled]),
+    returnValueForMissingStub: null,
+  );
   @override
-  void setUnknownMode(
-    int? mode,
-    bool? enabled,
-  ) =>
-      super.noSuchMethod(
-        Invocation.method(
-          #setUnknownMode,
-          [
-            mode,
-            enabled,
-          ],
-        ),
-        returnValueForMissingStub: null,
-      );
+  void setUnknownMode(int? mode, bool? enabled) => super.noSuchMethod(
+    Invocation.method(#setUnknownMode, [mode, enabled]),
+    returnValueForMissingStub: null,
+  );
   @override
   void setCursorKeysMode(bool? enabled) => super.noSuchMethod(
-        Invocation.method(
-          #setCursorKeysMode,
-          [enabled],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#setCursorKeysMode, [enabled]),
+    returnValueForMissingStub: null,
+  );
   @override
   void setReverseDisplayMode(bool? enabled) => super.noSuchMethod(
-        Invocation.method(
-          #setReverseDisplayMode,
-          [enabled],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#setReverseDisplayMode, [enabled]),
+    returnValueForMissingStub: null,
+  );
   @override
   void setOriginMode(bool? enabled) => super.noSuchMethod(
-        Invocation.method(
-          #setOriginMode,
-          [enabled],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#setOriginMode, [enabled]),
+    returnValueForMissingStub: null,
+  );
   @override
   void setColumnMode(bool? enabled) => super.noSuchMethod(
-        Invocation.method(
-          #setColumnMode,
-          [enabled],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#setColumnMode, [enabled]),
+    returnValueForMissingStub: null,
+  );
   @override
   void setAutoWrapMode(bool? enabled) => super.noSuchMethod(
-        Invocation.method(
-          #setAutoWrapMode,
-          [enabled],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#setAutoWrapMode, [enabled]),
+    returnValueForMissingStub: null,
+  );
   @override
   void setMouseMode(_i3.MouseMode? mode) => super.noSuchMethod(
-        Invocation.method(
-          #setMouseMode,
-          [mode],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#setMouseMode, [mode]),
+    returnValueForMissingStub: null,
+  );
   @override
   void setCursorBlinkMode(bool? enabled) => super.noSuchMethod(
-        Invocation.method(
-          #setCursorBlinkMode,
-          [enabled],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#setCursorBlinkMode, [enabled]),
+    returnValueForMissingStub: null,
+  );
   @override
   void setCursorVisibleMode(bool? enabled) => super.noSuchMethod(
-        Invocation.method(
-          #setCursorVisibleMode,
-          [enabled],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#setCursorVisibleMode, [enabled]),
+    returnValueForMissingStub: null,
+  );
   @override
   void useAltBuffer() => super.noSuchMethod(
-        Invocation.method(
-          #useAltBuffer,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#useAltBuffer, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void useMainBuffer() => super.noSuchMethod(
-        Invocation.method(
-          #useMainBuffer,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#useMainBuffer, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void clearAltBuffer() => super.noSuchMethod(
-        Invocation.method(
-          #clearAltBuffer,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#clearAltBuffer, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void setAppKeypadMode(bool? enabled) => super.noSuchMethod(
-        Invocation.method(
-          #setAppKeypadMode,
-          [enabled],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#setAppKeypadMode, [enabled]),
+    returnValueForMissingStub: null,
+  );
   @override
   void setReportFocusMode(bool? enabled) => super.noSuchMethod(
-        Invocation.method(
-          #setReportFocusMode,
-          [enabled],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#setReportFocusMode, [enabled]),
+    returnValueForMissingStub: null,
+  );
   @override
   void setMouseReportMode(_i3.MouseReportMode? mode) => super.noSuchMethod(
-        Invocation.method(
-          #setMouseReportMode,
-          [mode],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#setMouseReportMode, [mode]),
+    returnValueForMissingStub: null,
+  );
   @override
   void setAltBufferMouseScrollMode(bool? enabled) => super.noSuchMethod(
-        Invocation.method(
-          #setAltBufferMouseScrollMode,
-          [enabled],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#setAltBufferMouseScrollMode, [enabled]),
+    returnValueForMissingStub: null,
+  );
   @override
   void setBracketedPasteMode(bool? enabled) => super.noSuchMethod(
-        Invocation.method(
-          #setBracketedPasteMode,
-          [enabled],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#setBracketedPasteMode, [enabled]),
+    returnValueForMissingStub: null,
+  );
   @override
-  void setUnknownDecMode(
-    int? mode,
-    bool? enabled,
-  ) =>
-      super.noSuchMethod(
-        Invocation.method(
-          #setUnknownDecMode,
-          [
-            mode,
-            enabled,
-          ],
-        ),
-        returnValueForMissingStub: null,
-      );
+  void setUnknownDecMode(int? mode, bool? enabled) => super.noSuchMethod(
+    Invocation.method(#setUnknownDecMode, [mode, enabled]),
+    returnValueForMissingStub: null,
+  );
   @override
-  void resize(
-    int? cols,
-    int? rows,
-  ) =>
-      super.noSuchMethod(
-        Invocation.method(
-          #resize,
-          [
-            cols,
-            rows,
-          ],
-        ),
-        returnValueForMissingStub: null,
-      );
+  void resize(int? cols, int? rows) => super.noSuchMethod(
+    Invocation.method(#resize, [cols, rows]),
+    returnValueForMissingStub: null,
+  );
   @override
   void sendSize() => super.noSuchMethod(
-        Invocation.method(
-          #sendSize,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#sendSize, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void resetCursorStyle() => super.noSuchMethod(
-        Invocation.method(
-          #resetCursorStyle,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#resetCursorStyle, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void setCursorBold() => super.noSuchMethod(
-        Invocation.method(
-          #setCursorBold,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#setCursorBold, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void setCursorFaint() => super.noSuchMethod(
-        Invocation.method(
-          #setCursorFaint,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#setCursorFaint, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void setCursorItalic() => super.noSuchMethod(
-        Invocation.method(
-          #setCursorItalic,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#setCursorItalic, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void setCursorUnderline() => super.noSuchMethod(
-        Invocation.method(
-          #setCursorUnderline,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#setCursorUnderline, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void setCursorBlink() => super.noSuchMethod(
-        Invocation.method(
-          #setCursorBlink,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#setCursorBlink, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void setCursorInverse() => super.noSuchMethod(
-        Invocation.method(
-          #setCursorInverse,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#setCursorInverse, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void setCursorInvisible() => super.noSuchMethod(
-        Invocation.method(
-          #setCursorInvisible,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#setCursorInvisible, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void setCursorStrikethrough() => super.noSuchMethod(
-        Invocation.method(
-          #setCursorStrikethrough,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#setCursorStrikethrough, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void unsetCursorBold() => super.noSuchMethod(
-        Invocation.method(
-          #unsetCursorBold,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#unsetCursorBold, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void unsetCursorFaint() => super.noSuchMethod(
-        Invocation.method(
-          #unsetCursorFaint,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#unsetCursorFaint, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void unsetCursorItalic() => super.noSuchMethod(
-        Invocation.method(
-          #unsetCursorItalic,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#unsetCursorItalic, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void unsetCursorUnderline() => super.noSuchMethod(
-        Invocation.method(
-          #unsetCursorUnderline,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#unsetCursorUnderline, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void unsetCursorBlink() => super.noSuchMethod(
-        Invocation.method(
-          #unsetCursorBlink,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#unsetCursorBlink, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void unsetCursorInverse() => super.noSuchMethod(
-        Invocation.method(
-          #unsetCursorInverse,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#unsetCursorInverse, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void unsetCursorInvisible() => super.noSuchMethod(
-        Invocation.method(
-          #unsetCursorInvisible,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#unsetCursorInvisible, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void unsetCursorStrikethrough() => super.noSuchMethod(
-        Invocation.method(
-          #unsetCursorStrikethrough,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#unsetCursorStrikethrough, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void setForegroundColor16(int? color) => super.noSuchMethod(
-        Invocation.method(
-          #setForegroundColor16,
-          [color],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#setForegroundColor16, [color]),
+    returnValueForMissingStub: null,
+  );
   @override
   void setForegroundColor256(int? index) => super.noSuchMethod(
-        Invocation.method(
-          #setForegroundColor256,
-          [index],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#setForegroundColor256, [index]),
+    returnValueForMissingStub: null,
+  );
   @override
-  void setForegroundColorRgb(
-    int? r,
-    int? g,
-    int? b,
-  ) =>
-      super.noSuchMethod(
-        Invocation.method(
-          #setForegroundColorRgb,
-          [
-            r,
-            g,
-            b,
-          ],
-        ),
-        returnValueForMissingStub: null,
-      );
+  void setForegroundColorRgb(int? r, int? g, int? b) => super.noSuchMethod(
+    Invocation.method(#setForegroundColorRgb, [r, g, b]),
+    returnValueForMissingStub: null,
+  );
   @override
   void resetForeground() => super.noSuchMethod(
-        Invocation.method(
-          #resetForeground,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#resetForeground, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void setBackgroundColor16(int? color) => super.noSuchMethod(
-        Invocation.method(
-          #setBackgroundColor16,
-          [color],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#setBackgroundColor16, [color]),
+    returnValueForMissingStub: null,
+  );
   @override
   void setBackgroundColor256(int? index) => super.noSuchMethod(
-        Invocation.method(
-          #setBackgroundColor256,
-          [index],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#setBackgroundColor256, [index]),
+    returnValueForMissingStub: null,
+  );
   @override
-  void setBackgroundColorRgb(
-    int? r,
-    int? g,
-    int? b,
-  ) =>
-      super.noSuchMethod(
-        Invocation.method(
-          #setBackgroundColorRgb,
-          [
-            r,
-            g,
-            b,
-          ],
-        ),
-        returnValueForMissingStub: null,
-      );
+  void setBackgroundColorRgb(int? r, int? g, int? b) => super.noSuchMethod(
+    Invocation.method(#setBackgroundColorRgb, [r, g, b]),
+    returnValueForMissingStub: null,
+  );
   @override
   void resetBackground() => super.noSuchMethod(
-        Invocation.method(
-          #resetBackground,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#resetBackground, []),
+    returnValueForMissingStub: null,
+  );
   @override
   void unsupportedStyle(int? param) => super.noSuchMethod(
-        Invocation.method(
-          #unsupportedStyle,
-          [param],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#unsupportedStyle, [param]),
+    returnValueForMissingStub: null,
+  );
   @override
   void setTitle(String? name) => super.noSuchMethod(
-        Invocation.method(
-          #setTitle,
-          [name],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#setTitle, [name]),
+    returnValueForMissingStub: null,
+  );
   @override
   void setIconName(String? name) => super.noSuchMethod(
-        Invocation.method(
-          #setIconName,
-          [name],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#setIconName, [name]),
+    returnValueForMissingStub: null,
+  );
   @override
   void unknownOSC(String? code, List<String>? args) => super.noSuchMethod(
-        Invocation.method(
-          #unknownOSC,
-          [code],
-        ),
-        returnValueForMissingStub: null,
-      );
+    Invocation.method(#unknownOSC, [code]),
+    returnValueForMissingStub: null,
+  );
 }

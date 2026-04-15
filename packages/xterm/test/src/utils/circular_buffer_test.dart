@@ -227,9 +227,7 @@ void main() {
 
     test("insert works", () {
       final cl = IndexAwareCircularBuffer<IndexedValue<int>>(10);
-      cl.pushAll(
-        List<int>.generate(5, (index) => index).map(IndexedValue.new),
-      );
+      cl.pushAll(List<int>.generate(5, (index) => index).map(IndexedValue.new));
       expect(cl.length, 5);
       expect(cl[0], 0.indexed);
       cl.insert(0, IndexedValue(100));
@@ -285,9 +283,10 @@ void main() {
 
       cl.insertAll(
         2,
-        List<int>.generate(2, (index) => 20 + index)
-            .map(IndexedValue.new)
-            .toList(),
+        List<int>.generate(
+          2,
+          (index) => 20 + index,
+        ).map(IndexedValue.new).toList(),
       );
 
       expect(cl.length, 10);

@@ -425,7 +425,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String updateAvailableDescription(
-      String latestVersion, String currentVersion) {
+    String latestVersion,
+    String currentVersion,
+  ) {
     return 'A new version $latestVersion is available.\nCurrent version: $currentVersion';
   }
 }

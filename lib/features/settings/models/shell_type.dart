@@ -85,8 +85,9 @@ enum ShellType {
 
     if (shell == 'powershell' || shell == 'powershell.exe') {
       try {
-        final result =
-            Process.runSync('where', ['powershell'], runInShell: true);
+        final result = Process.runSync('where', [
+          'powershell',
+        ], runInShell: true);
         if (result.exitCode == 0) return 'powershell';
       } catch (_) {}
       // Fallback to cmd
@@ -100,11 +101,7 @@ enum ShellType {
   static Future<bool> _isCommandAvailable(String command) async {
     try {
       final checkCmd = Platform.isWindows ? 'where' : 'which';
-      final result = await Process.run(
-        checkCmd,
-        [command],
-        runInShell: true,
-      );
+      final result = await Process.run(checkCmd, [command], runInShell: true);
       return result.exitCode == 0;
     } catch (_) {
       return false;

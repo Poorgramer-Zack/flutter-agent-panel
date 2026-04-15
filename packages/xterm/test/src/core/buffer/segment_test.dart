@@ -4,9 +4,10 @@ import 'package:xterm/xterm.dart';
 void main() {
   group('BufferSegment', () {
     test('isWithin() works', () {
-      final segments = BufferRangeLine(CellOffset(10, 10), CellOffset(10, 12))
-          .toSegments()
-          .toList();
+      final segments = BufferRangeLine(
+        CellOffset(10, 10),
+        CellOffset(10, 12),
+      ).toSegments().toList();
 
       expect(segments[0].start, equals(10));
       expect(segments[0].end, null);

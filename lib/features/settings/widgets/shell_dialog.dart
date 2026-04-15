@@ -56,7 +56,7 @@ void showAddEditShellDialog(
                     Gap(8.w),
                     ShadButton.outline(
                       onPressed: () async {
-                        final result = await FilePicker.platform.pickFiles(
+                        final result = await FilePicker.pickFiles(
                           type: FileType.custom,
                           allowedExtensions: PlatformUtils.isWindows
                               ? ['exe', 'bat', 'cmd']
@@ -89,22 +89,16 @@ void showAddEditShellDialog(
 
                         if (existingShell != null) {
                           context.read<SettingsBloc>().add(
-                                UpdateCustomShell(
-                                  existingShell.copyWith(
-                                    name: name,
-                                    path: path,
-                                  ),
-                                ),
-                              );
+                            UpdateCustomShell(
+                              existingShell.copyWith(name: name, path: path),
+                            ),
+                          );
                         } else {
                           context.read<SettingsBloc>().add(
-                                AddCustomShell(
-                                  CustomShellConfig.create(
-                                    name: name,
-                                    path: path,
-                                  ),
-                                ),
-                              );
+                            AddCustomShell(
+                              CustomShellConfig.create(name: name, path: path),
+                            ),
+                          );
                         }
                         Navigator.of(context).pop();
                       },

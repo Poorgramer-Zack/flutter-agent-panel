@@ -1,14 +1,12 @@
 part of 'workspace_bloc.dart';
 
 class WorkspaceState extends Equatable {
-  const WorkspaceState({
-    this.workspaces = const [],
-    this.selectedWorkspaceId,
-  });
+  const WorkspaceState({this.workspaces = const [], this.selectedWorkspaceId});
 
   factory WorkspaceState.fromJson(Map<String, dynamic> json) {
     return WorkspaceState(
-      workspaces: (json['workspaces'] as List<dynamic>?)
+      workspaces:
+          (json['workspaces'] as List<dynamic>?)
               ?.map((e) => Workspace.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],

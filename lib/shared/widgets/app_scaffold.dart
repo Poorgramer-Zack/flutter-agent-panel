@@ -28,12 +28,11 @@ class AppScaffold extends StatelessWidget {
                 Expanded(
                   child: DragToMoveArea(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                      ),
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
                       child: Align(
                         alignment: Alignment.centerLeft,
-                        child: titleBar ??
+                        child:
+                            titleBar ??
                             Text(
                               'Flutter Agent Panel',
                               style: theme.textTheme.small.copyWith(
@@ -56,17 +55,13 @@ class AppScaffold extends StatelessWidget {
             decoration: BoxDecoration(
               color: theme.colorScheme.background,
               border: Border(
-                bottom: BorderSide(
-                  color: theme.colorScheme.border,
-                ),
+                bottom: BorderSide(color: theme.colorScheme.border),
               ),
             ),
             alignment: Alignment.centerLeft,
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 12,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 12),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -155,11 +150,7 @@ class _WindowButton extends StatelessWidget {
           focusedBorder: ShadBorder.none,
           border: ShadBorder.none,
         ),
-        child: Icon(
-          icon,
-          size: 14,
-          color: theme.colorScheme.foreground,
-        ),
+        child: Icon(icon, size: 14, color: theme.colorScheme.foreground),
       ),
     );
   }

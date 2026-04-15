@@ -11,9 +11,9 @@ class TerminalPainter {
     required TerminalTheme theme,
     required TerminalStyle textStyle,
     required TextScaler textScaler,
-  })  : _textStyle = textStyle,
-        _theme = theme,
-        _textScaler = textScaler;
+  }) : _textStyle = textStyle,
+       _theme = theme,
+       _textScaler = textScaler;
 
   /// A lookup table from terminal colors to Flutter colors.
   late var _colorPalette = PaletteBuilder(_theme).build();
@@ -58,9 +58,7 @@ class TerminalPainter {
 
     final textStyle = _textStyle.toTextStyle();
     final builder = ParagraphBuilder(textStyle.getParagraphStyle());
-    builder.pushStyle(
-      textStyle.getTextStyle(textScaler: _textScaler),
-    );
+    builder.pushStyle(textStyle.getTextStyle(textScaler: _textScaler));
     builder.addText(test);
 
     final paragraph = builder.build();
@@ -81,10 +79,7 @@ class TerminalPainter {
     final rawWidth = paragraph.maxIntrinsicWidth / test.length;
     final rawHeight = paragraph.height;
 
-    final result = Size(
-      rawWidth.floorToDouble(),
-      rawHeight.ceilToDouble(),
-    );
+    final result = Size(rawWidth.floorToDouble(), rawHeight.ceilToDouble());
 
     paragraph.dispose();
     return result;
@@ -139,26 +134,21 @@ class TerminalPainter {
 
   @pragma('vm:prefer-inline')
   void paintHighlight(Canvas canvas, Offset offset, int length, Color color) {
-    final endOffset =
-        offset.translate(length * _cellSize.width, _cellSize.height);
+    final endOffset = offset.translate(
+      length * _cellSize.width,
+      _cellSize.height,
+    );
 
     final paint = Paint()
       ..color = color
       ..strokeWidth = 1;
 
-    canvas.drawRect(
-      Rect.fromPoints(offset, endOffset),
-      paint,
-    );
+    canvas.drawRect(Rect.fromPoints(offset, endOffset), paint);
   }
 
   /// Paints [line] to [canvas] at [offset]. The x offset of [offset] is usually
   /// 0, and the y offset is the top of the line.
-  void paintLine(
-    Canvas canvas,
-    Offset offset,
-    BufferLine line,
-  ) {
+  void paintLine(Canvas canvas, Offset offset, BufferLine line) {
     final cellData = CellData.empty();
     final cellWidth = _cellSize.width;
 

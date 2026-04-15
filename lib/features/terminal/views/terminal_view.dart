@@ -10,10 +10,7 @@ import '../bloc/terminal_bloc.dart';
 /// Terminal page that displays a single terminal based on route parameter.
 @RoutePage()
 class TerminalView extends StatelessWidget {
-  const TerminalView({
-    super.key,
-    @pathParam required this.terminalId,
-  });
+  const TerminalView({super.key, @pathParam required this.terminalId});
 
   final String terminalId;
 
@@ -35,14 +32,9 @@ class TerminalView extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(
-                    l10n.startingTerminal,
-                    style: theme.textTheme.large,
-                  ),
+                  Text(l10n.startingTerminal, style: theme.textTheme.large),
                   const Gap(16),
-                  CircularProgressIndicator(
-                    color: theme.colorScheme.primary,
-                  ),
+                  CircularProgressIndicator(color: theme.colorScheme.primary),
                 ],
               ),
             ),

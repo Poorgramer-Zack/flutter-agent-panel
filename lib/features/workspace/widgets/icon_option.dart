@@ -33,11 +33,11 @@ class IconOption extends StatelessWidget {
       onPressed: () {
         final config = workspace.terminals.firstWhere((t) => t.id == node.id);
         context.read<WorkspaceBloc>().add(
-              UpdateTerminalInWorkspace(
-                workspaceId: workspace.id,
-                config: config.copyWith(icon: iconName),
-              ),
-            );
+          UpdateTerminalInWorkspace(
+            workspaceId: workspace.id,
+            config: config.copyWith(icon: iconName),
+          ),
+        );
         onClose?.call();
       },
       child: Icon(iconData, size: 20),

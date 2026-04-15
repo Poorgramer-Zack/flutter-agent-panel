@@ -35,21 +35,21 @@ class RenderTerminal extends RenderBox with RelayoutWhenSystemFontsChangeMixin {
     required bool alwaysShowCursor,
     EditableRectCallback? onEditableRect,
     String? composingText,
-  })  : _terminal = terminal,
-        _controller = controller,
-        _offset = offset,
-        _padding = padding,
-        _autoResize = autoResize,
-        _focusNode = focusNode,
-        _cursorType = cursorType,
-        _alwaysShowCursor = alwaysShowCursor,
-        _onEditableRect = onEditableRect,
-        _composingText = composingText,
-        _painter = TerminalPainter(
-          theme: theme,
-          textStyle: textStyle,
-          textScaler: textScaler,
-        );
+  }) : _terminal = terminal,
+       _controller = controller,
+       _offset = offset,
+       _padding = padding,
+       _autoResize = autoResize,
+       _focusNode = focusNode,
+       _cursorType = cursorType,
+       _alwaysShowCursor = alwaysShowCursor,
+       _onEditableRect = onEditableRect,
+       _composingText = composingText,
+       _painter = TerminalPainter(
+         theme: theme,
+         textStyle: textStyle,
+         textScaler: textScaler,
+       );
 
   // Cursor blink state
   bool _cursorVisible = true;
@@ -478,6 +478,7 @@ class RenderTerminal extends RenderBox with RelayoutWhenSystemFontsChangeMixin {
       _controller.highlights,
       effectFirstLine,
       effectLastLine,
+      offset,
     );
 
     if (_controller.selection != null) {
@@ -486,6 +487,7 @@ class RenderTerminal extends RenderBox with RelayoutWhenSystemFontsChangeMixin {
         _controller.selection!,
         effectFirstLine,
         effectLastLine,
+        offset,
       );
     }
 
@@ -494,11 +496,7 @@ class RenderTerminal extends RenderBox with RelayoutWhenSystemFontsChangeMixin {
     final baseY = _lineOffset.floorToDouble();
     for (var i = effectFirstLine; i <= effectLastLine; i++) {
       final lineY = (baseY + i * charHeight).floorToDouble();
-      _painter.paintLine(
-        canvas,
-        offset.translate(0, lineY),
-        lines[i],
-      );
+      _painter.paintLine(canvas, offset.translate(0, lineY), lines[i]);
     }
 
     if (_terminal.buffer.absoluteCursorY >= effectFirstLine &&
@@ -547,6 +545,7 @@ class RenderTerminal extends RenderBox with RelayoutWhenSystemFontsChangeMixin {
     BufferRange selection,
     int firstLine,
     int lastLine,
+    Offset offset,
   ) {
     for (final segment in selection.toSegments()) {
       if (segment.line >= _terminal.buffer.lines.length) {
@@ -561,7 +560,7 @@ class RenderTerminal extends RenderBox with RelayoutWhenSystemFontsChangeMixin {
         break;
       }
 
-      _paintSegment(canvas, segment, _painter.theme.selection);
+      _paintSegment(canvas, segment, _painter.theme.selection, offset);
     }
   }
 
@@ -570,6 +569,7 @@ class RenderTerminal extends RenderBox with RelayoutWhenSystemFontsChangeMixin {
     List<TerminalHighlight> highlights,
     int firstLine,
     int lastLine,
+    Offset offset,
   ) {
     for (var highlight in _controller.highlights) {
       final range = highlight.range?.normalized;
@@ -589,17 +589,22 @@ class RenderTerminal extends RenderBox with RelayoutWhenSystemFontsChangeMixin {
           break;
         }
 
-        _paintSegment(canvas, segment, highlight.color);
+        _paintSegment(canvas, segment, highlight.color, offset);
       }
     }
   }
 
   @pragma('vm:prefer-inline')
-  void _paintSegment(Canvas canvas, BufferSegment segment, Color color) {
+  void _paintSegment(
+    Canvas canvas,
+    BufferSegment segment,
+    Color color,
+    Offset offset,
+  ) {
     final start = segment.start ?? 0;
     final end = segment.end ?? _terminal.viewWidth;
 
-    final startOffset = Offset(
+    final startOffset = offset.translate(
       start * _painter.cellSize.width,
       segment.line * _painter.cellSize.height + _lineOffset,
     );

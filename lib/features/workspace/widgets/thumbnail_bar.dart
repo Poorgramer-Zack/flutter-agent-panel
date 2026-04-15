@@ -48,9 +48,7 @@ class ThumbnailBar extends StatelessWidget {
       height: 120,
       decoration: BoxDecoration(
         color: theme.colorScheme.card,
-        border: Border(
-          top: BorderSide(color: theme.colorScheme.border),
-        ),
+        border: Border(top: BorderSide(color: theme.colorScheme.border)),
       ),
       child: ListView(
         scrollDirection: Axis.horizontal,
@@ -65,12 +63,12 @@ class ThumbnailBar extends StatelessWidget {
               itemCount: workspace.terminals.length,
               onReorder: (oldIndex, newIndex) {
                 context.read<WorkspaceBloc>().add(
-                      ReorderTerminalsInWorkspace(
-                        workspaceId: workspace.id,
-                        oldIndex: oldIndex,
-                        newIndex: newIndex,
-                      ),
-                    );
+                  ReorderTerminalsInWorkspace(
+                    workspaceId: workspace.id,
+                    oldIndex: oldIndex,
+                    newIndex: newIndex,
+                  ),
+                );
               },
               itemBuilder: (context, index) {
                 final config = workspace.terminals[index];
@@ -123,8 +121,9 @@ class ThumbnailBar extends StatelessWidget {
                   child: AgentSelectionPopover(
                     controller: agentPopoverController,
                     workspaceId: workspace.id,
-                    enabledAgents:
-                        settings.agents.where((a) => a.enabled).toList(),
+                    enabledAgents: settings.agents
+                        .where((a) => a.enabled)
+                        .toList(),
                     onAddTerminal: onAddTerminal,
                   ),
                 ),
@@ -159,9 +158,10 @@ class _ThumbnailItem extends StatelessWidget {
         AgentPreset.gemini => Assets.geminiLogo,
         AgentPreset.codex => Assets.chatgptLogo,
         AgentPreset.qwen => Assets.qwenLogo,
-        AgentPreset.opencode => theme.brightness == Brightness.dark
-            ? Assets.opencodeDarkLogo
-            : Assets.opencodeLogo,
+        AgentPreset.opencode =>
+          theme.brightness == Brightness.dark
+              ? Assets.opencodeDarkLogo
+              : Assets.opencodeLogo,
         AgentPreset.githubCopilot => Assets.githubCopilotLogo,
         _ => null,
       };
@@ -217,8 +217,9 @@ class _ThumbnailItem extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColors.terminalBackground,
           border: Border.all(
-            color:
-                isActive ? theme.colorScheme.primary : theme.colorScheme.border,
+            color: isActive
+                ? theme.colorScheme.primary
+                : theme.colorScheme.border,
             width: isActive ? 2 : 1,
           ),
           borderRadius: BorderRadius.circular(4),
@@ -228,12 +229,10 @@ class _ThumbnailItem extends StatelessWidget {
           children: [
             // Header
             Container(
-              color:
-                  isActive ? theme.colorScheme.primary : theme.colorScheme.card,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 4,
-                vertical: 2,
-              ),
+              color: isActive
+                  ? theme.colorScheme.primary
+                  : theme.colorScheme.card,
+              padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
               child: Row(
                 children: [
                   const Gap(4),

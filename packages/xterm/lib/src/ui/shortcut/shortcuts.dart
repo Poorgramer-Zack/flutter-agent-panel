@@ -27,8 +27,9 @@ final _defaultShortcuts = {
 final _defaultAppleShortcuts = {
   SingleActivator(LogicalKeyboardKey.keyC, meta: true):
       CopySelectionTextIntent.copy,
-  SingleActivator(LogicalKeyboardKey.keyV, meta: true):
-      const PasteTextIntent(SelectionChangedCause.keyboard),
+  SingleActivator(LogicalKeyboardKey.keyV, meta: true): const PasteTextIntent(
+    SelectionChangedCause.keyboard,
+  ),
   SingleActivator(LogicalKeyboardKey.keyA, meta: true):
       const SelectAllTextIntent(SelectionChangedCause.keyboard),
 };

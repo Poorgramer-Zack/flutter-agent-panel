@@ -17,10 +17,7 @@ import 'settings_section.dart';
 
 /// Agents settings content widget.
 class AgentsContent extends StatefulWidget {
-  const AgentsContent({
-    super.key,
-    required this.settings,
-  });
+  const AgentsContent({super.key, required this.settings});
 
   final AppSettings settings;
 
@@ -40,9 +37,9 @@ class _AgentsContentState extends State<AgentsContent> {
       if (agent.enabled) {
         final exists = await _checkCommandInstalled(agent.command, agent);
         if (!exists && mounted) {
-          context
-              .read<SettingsBloc>()
-              .add(UpdateAgentConfig(agent.copyWith(enabled: false)));
+          context.read<SettingsBloc>().add(
+            UpdateAgentConfig(agent.copyWith(enabled: false)),
+          );
         }
       }
     }
@@ -54,21 +51,18 @@ class _AgentsContentState extends State<AgentsContent> {
 
       if (isWsl && Platform.isWindows) {
         // Run check inside WSL
-        final result = await Process.run(
-          'wsl',
-          ['which', command],
-          runInShell: true,
-        );
+        final result = await Process.run('wsl', [
+          'which',
+          command,
+        ], runInShell: true);
         return result.exitCode == 0;
       }
 
       // Default Windows/Unix check
       final isWindows = Platform.isWindows;
-      final result = await Process.run(
-        isWindows ? 'where' : 'which',
-        [command],
-        runInShell: true,
-      );
+      final result = await Process.run(isWindows ? 'where' : 'which', [
+        command,
+      ], runInShell: true);
       return result.exitCode == 0;
     } catch (e) {
       return false;
@@ -105,33 +99,30 @@ class _AgentsContentState extends State<AgentsContent> {
     }
   }
 
-  Future<void> _toggleAgent(
-    AgentConfig agent,
-    bool value,
-  ) async {
+  Future<void> _toggleAgent(AgentConfig agent, bool value) async {
     final l10n = context.t;
     final theme = context
         .theme; // Use context.theme assuming it's available via extension or method
 
     if (!value) {
-      context
-          .read<SettingsBloc>()
-          .add(UpdateAgentConfig(agent.copyWith(enabled: false)));
+      context.read<SettingsBloc>().add(
+        UpdateAgentConfig(agent.copyWith(enabled: false)),
+      );
       return;
     }
 
-    context
-        .read<SettingsBloc>()
-        .add(UpdateAgentConfig(agent.copyWith(enabled: true)));
+    context.read<SettingsBloc>().add(
+      UpdateAgentConfig(agent.copyWith(enabled: true)),
+    );
 
     final exists = await _checkCommandInstalled(agent.command, agent);
     if (!mounted) return;
 
     if (exists) return;
 
-    context
-        .read<SettingsBloc>()
-        .add(UpdateAgentConfig(agent.copyWith(enabled: false)));
+    context.read<SettingsBloc>().add(
+      UpdateAgentConfig(agent.copyWith(enabled: false)),
+    );
 
     final installCmd = agent.preset.defaultInstallCommand;
     if (installCmd.isEmpty) {
@@ -211,13 +202,13 @@ class _AgentsContentState extends State<AgentsContent> {
             backgroundColor: Colors.green.withValues(alpha: 0.2),
           ),
         );
-        context
-            .read<SettingsBloc>()
-            .add(UpdateAgentConfig(agent.copyWith(enabled: true)));
-      } else {
-        ShadToaster.of(context).show(
-          ShadToast.destructive(title: Text(l10n.agentInstallFailed)),
+        context.read<SettingsBloc>().add(
+          UpdateAgentConfig(agent.copyWith(enabled: true)),
         );
+      } else {
+        ShadToaster.of(
+          context,
+        ).show(ShadToast.destructive(title: Text(l10n.agentInstallFailed)));
       }
     }
   }
@@ -228,10 +219,12 @@ class _AgentsContentState extends State<AgentsContent> {
     final theme = context.theme;
     final settings = widget.settings;
 
-    final presetAgents =
-        settings.agents.where((a) => a.preset != AgentPreset.custom).toList();
-    final customAgents =
-        settings.agents.where((a) => a.preset == AgentPreset.custom).toList();
+    final presetAgents = settings.agents
+        .where((a) => a.preset != AgentPreset.custom)
+        .toList();
+    final customAgents = settings.agents
+        .where((a) => a.preset == AgentPreset.custom)
+        .toList();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

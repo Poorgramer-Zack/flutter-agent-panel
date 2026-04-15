@@ -117,9 +117,7 @@ class _WorkspaceDrawerState extends State<WorkspaceDrawer> {
       child: Container(
         decoration: BoxDecoration(
           color: theme.colorScheme.card,
-          border: Border(
-            right: BorderSide(color: theme.colorScheme.border),
-          ),
+          border: Border(right: BorderSide(color: theme.colorScheme.border)),
         ),
         child: Column(
           children: [
@@ -127,8 +125,9 @@ class _WorkspaceDrawerState extends State<WorkspaceDrawer> {
             Container(
               height: 48,
               padding: const EdgeInsets.symmetric(horizontal: 4),
-              alignment:
-                  widget.isCollapsed ? Alignment.center : Alignment.centerLeft,
+              alignment: widget.isCollapsed
+                  ? Alignment.center
+                  : Alignment.centerLeft,
               child: Row(
                 mainAxisAlignment: widget.isCollapsed
                     ? MainAxisAlignment.center
@@ -178,8 +177,9 @@ class _WorkspaceDrawerState extends State<WorkspaceDrawer> {
             Expanded(
               child: BlocBuilder<WorkspaceBloc, WorkspaceState>(
                 builder: (context, state) {
-                  final filteredWorkspaces =
-                      _filterWorkspaces(state.workspaces);
+                  final filteredWorkspaces = _filterWorkspaces(
+                    state.workspaces,
+                  );
 
                   if (filteredWorkspaces.isEmpty && !widget.isCollapsed) {
                     return Center(
@@ -202,15 +202,17 @@ class _WorkspaceDrawerState extends State<WorkspaceDrawer> {
                       final movedWorkspace = filteredWorkspaces[oldIndex];
 
                       // Calculate boundary: find first unpinned index
-                      final firstUnpinnedIndex =
-                          filteredWorkspaces.indexWhere((w) => !w.isPinned);
+                      final firstUnpinnedIndex = filteredWorkspaces.indexWhere(
+                        (w) => !w.isPinned,
+                      );
                       final pinnedCount = firstUnpinnedIndex == -1
                           ? filteredWorkspaces.length
                           : firstUnpinnedIndex;
 
                       // For newIndex, adjust for the "remove then insert" behavior
-                      var effectiveNewIndex =
-                          oldIndex < newIndex ? newIndex - 1 : newIndex;
+                      var effectiveNewIndex = oldIndex < newIndex
+                          ? newIndex - 1
+                          : newIndex;
 
                       // Enforce constraints by clamping index
                       if (!movedWorkspace.isPinned) {
@@ -221,8 +223,9 @@ class _WorkspaceDrawerState extends State<WorkspaceDrawer> {
                       } else {
                         // Pinned item: must stay in pinned zone (< pinnedCount)
                         if (effectiveNewIndex >= pinnedCount) {
-                          effectiveNewIndex =
-                              pinnedCount > 0 ? pinnedCount - 1 : 0;
+                          effectiveNewIndex = pinnedCount > 0
+                              ? pinnedCount - 1
+                              : 0;
                         }
                       }
 
@@ -239,9 +242,9 @@ class _WorkspaceDrawerState extends State<WorkspaceDrawer> {
 
                       // Simpler: Map to global index.
                       // Remove moved item from filtered list temporarily
-                      final tempFiltered =
-                          List<Workspace>.from(filteredWorkspaces)
-                            ..removeAt(oldIndex);
+                      final tempFiltered = List<Workspace>.from(
+                        filteredWorkspaces,
+                      )..removeAt(oldIndex);
 
                       int actualNewIndex;
                       if (tempFiltered.isEmpty) {
@@ -253,8 +256,9 @@ class _WorkspaceDrawerState extends State<WorkspaceDrawer> {
                       } else {
                         // Insert before the item at effectiveNewIndex
                         final targetNeighbor = tempFiltered[effectiveNewIndex];
-                        actualNewIndex =
-                            state.workspaces.indexOf(targetNeighbor);
+                        actualNewIndex = state.workspaces.indexOf(
+                          targetNeighbor,
+                        );
                       }
 
                       // Ensure actualNewIndex is valid relative to original list state
@@ -294,15 +298,16 @@ class _WorkspaceDrawerState extends State<WorkspaceDrawer> {
                       // Remove B (1). [A, C]. Insert at 3. [A, C, B]. Correct.
 
                       final oldWorkspace = filteredWorkspaces[oldIndex];
-                      final actualOldIndex =
-                          state.workspaces.indexOf(oldWorkspace);
+                      final actualOldIndex = state.workspaces.indexOf(
+                        oldWorkspace,
+                      );
 
                       context.read<WorkspaceBloc>().add(
-                            ReorderWorkspaces(
-                              oldIndex: actualOldIndex,
-                              newIndex: actualNewIndex,
-                            ),
-                          );
+                        ReorderWorkspaces(
+                          oldIndex: actualOldIndex,
+                          newIndex: actualNewIndex,
+                        ),
+                      );
                     },
                     itemBuilder: (context, index) {
                       final workspace = filteredWorkspaces[index];
@@ -425,10 +430,7 @@ class _WorkspaceListItem extends StatelessWidget {
             left: 0,
             top: 0,
             bottom: 0,
-            child: Container(
-              width: 2,
-              color: theme.colorScheme.primary,
-            ),
+            child: Container(width: 2, color: theme.colorScheme.primary),
           ),
         // Content (Not positioned, dictates the size of the Stack)
         Padding(
@@ -437,8 +439,9 @@ class _WorkspaceListItem extends StatelessWidget {
             vertical: hasTags ? 8 : 8, // Fixed padding for consistency
           ),
           child: SizedBox(
-            height:
-                isCollapsed ? 40 : null, // Enforce height only when collapsed
+            height: isCollapsed
+                ? 40
+                : null, // Enforce height only when collapsed
             child: isCollapsed
                 ? _buildCollapsedContent(theme)
                 : _buildExpandedContent(theme),
@@ -527,10 +530,7 @@ class _WorkspaceListItem extends StatelessWidget {
               // Tags Row
               if (workspace.tags.isNotEmpty) ...[
                 const Gap(4),
-                WorkspaceTagChips(
-                  tags: workspace.tags,
-                  isCompact: true,
-                ),
+                WorkspaceTagChips(tags: workspace.tags, isCompact: true),
               ],
             ],
           ),

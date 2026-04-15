@@ -33,7 +33,8 @@ class Workspace extends Equatable {
       id: json['id'] as String,
       path: json['path'] as String,
       name: json['name'] as String,
-      terminals: (json['terminals'] as List<dynamic>?)
+      terminals:
+          (json['terminals'] as List<dynamic>?)
               ?.map((e) => TerminalConfig.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],

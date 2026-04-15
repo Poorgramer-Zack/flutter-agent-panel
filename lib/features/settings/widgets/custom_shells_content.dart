@@ -10,10 +10,7 @@ import 'shell_dialog.dart';
 
 /// Custom shells settings content widget.
 class CustomShellsContent extends StatelessWidget {
-  const CustomShellsContent({
-    super.key,
-    required this.settings,
-  });
+  const CustomShellsContent({super.key, required this.settings});
 
   final AppSettings settings;
 
@@ -106,11 +103,7 @@ class CustomShellsContent extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  children: [
-                    Text(shell.name, style: theme.textTheme.p),
-                  ],
-                ),
+                Row(children: [Text(shell.name, style: theme.textTheme.p)]),
                 Gap(2.h),
                 Text(
                   shell.path,

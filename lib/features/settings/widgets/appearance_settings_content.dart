@@ -50,11 +50,12 @@ class AppearanceSettingsContent extends StatelessWidget {
             onChanged: (appTheme) {
               if (appTheme != null) {
                 context.read<SettingsBloc>().add(UpdateAppTheme(appTheme));
-                final defaultTerminalTheme =
-                    appTheme == AppTheme.light ? 'DefaultLight' : 'DefaultDark';
-                context
-                    .read<SettingsBloc>()
-                    .add(UpdateTerminalTheme(defaultTerminalTheme));
+                final defaultTerminalTheme = appTheme == AppTheme.light
+                    ? 'DefaultLight'
+                    : 'DefaultDark';
+                context.read<SettingsBloc>().add(
+                  UpdateTerminalTheme(defaultTerminalTheme),
+                );
               }
             },
           ),

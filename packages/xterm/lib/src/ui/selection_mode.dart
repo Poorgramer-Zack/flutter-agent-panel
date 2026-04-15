@@ -1,5 +1,1 @@
-enum SelectionMode {
-  line,
-
-  block,
-}
+enum SelectionMode { line, block }

@@ -125,11 +125,7 @@ class TerminalThemeService {
         return ('jsonMustBeObject', null);
       }
       // Check required fields
-      final requiredFields = [
-        'background',
-        'foreground',
-        'cursorColor',
-      ];
+      final requiredFields = ['background', 'foreground', 'cursorColor'];
       for (final field in requiredFields) {
         if (!json.containsKey(field)) {
           return ('missingRequiredField', field);

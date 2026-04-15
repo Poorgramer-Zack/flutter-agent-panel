@@ -37,7 +37,8 @@ class TerminalStyle {
     return TerminalStyle(
       fontSize: textStyle.fontSize ?? _kDefaultFontSize,
       height: textStyle.height ?? _kDefaultHeight,
-      fontFamily: textStyle.fontFamily ??
+      fontFamily:
+          textStyle.fontFamily ??
           textStyle.fontFamilyFallback?.first ??
           _kDefaultFontFamily,
       fontFamilyFallback:

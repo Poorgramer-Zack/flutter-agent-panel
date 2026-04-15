@@ -12,9 +12,9 @@ class GlowingIcon extends StatefulWidget {
     this.size = 16.0,
     this.baseColor,
   }) : assert(
-          icon != null || svgPath != null,
-          'Either icon or svgPath must be provided',
-        );
+         icon != null || svgPath != null,
+         'Either icon or svgPath must be provided',
+       );
   final IconData? icon;
   final String? svgPath;
   final TerminalStatus status;
@@ -38,9 +38,10 @@ class _GlowingIconState extends State<GlowingIcon>
       duration: const Duration(milliseconds: 1500),
     );
 
-    _glowAnimation = Tween<double>(begin: 0.4, end: 1.0).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
-    );
+    _glowAnimation = Tween<double>(
+      begin: 0.4,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
 
     if (widget.status == TerminalStatus.running ||
         widget.status == TerminalStatus.restarting) {
@@ -78,7 +79,8 @@ class _GlowingIconState extends State<GlowingIcon>
     return AnimatedBuilder(
       animation: _glowAnimation,
       builder: (context, child) {
-        final isAnimating = widget.status == TerminalStatus.running ||
+        final isAnimating =
+            widget.status == TerminalStatus.running ||
             widget.status == TerminalStatus.restarting;
 
         final opacity = isAnimating ? _glowAnimation.value : 1.0;
@@ -116,10 +118,10 @@ class _GlowingIconState extends State<GlowingIcon>
   }
 
   Color _getStatusColor(TerminalStatus status) => switch (status) {
-        TerminalStatus.running => Colors.orangeAccent,
-        TerminalStatus.idle => Colors.greenAccent,
-        TerminalStatus.error => Colors.redAccent,
-        TerminalStatus.disconnected => Colors.grey.shade600,
-        TerminalStatus.restarting => Colors.blueAccent,
-      };
+    TerminalStatus.running => Colors.orangeAccent,
+    TerminalStatus.idle => Colors.greenAccent,
+    TerminalStatus.error => Colors.redAccent,
+    TerminalStatus.disconnected => Colors.grey.shade600,
+    TerminalStatus.restarting => Colors.blueAccent,
+  };
 }

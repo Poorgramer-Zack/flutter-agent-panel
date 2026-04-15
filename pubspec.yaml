@@ -2,42 +2,41 @@ name: flutter_agent_panel
 description: "A modern multi terminal application for AI agent."
 publish_to: 'none'
 
-version: 0.0.9+1
+version: 0.0.10+1
 
 environment:
-  sdk: ^3.6.0
+  sdk: ^3.11.0
 
 dependencies:
   flutter:
     sdk: flutter
 
-  cupertino_icons: ^1.0.8
+  cupertino_icons: ^1.0.9
   xterm: 
     path: ./packages/xterm
   flutter_pty: 
     path: ./packages/flutter_pty
   window_manager: ^0.5.1
   path_provider: ^2.1.5
-  uuid: ^4.5.1
+  uuid: ^4.5.3
   flutter_screenutil: ^5.9.3
   flutter_localizations:
     sdk: flutter
-  collection: ^1.19.0
+  collection: ^1.19.1
   flutter_bloc: ^9.1.1
-  hydrated_bloc: ^10.1.1
-  equatable: ^2.0.7
-  file_picker: ^10.3.8
-  shadcn_ui: ^0.43.0
-  url_launcher: ^6.3.1
+  hydrated_bloc: ^11.0.0
+  equatable: ^2.0.8
+  file_picker: ^11.0.2
+  shadcn_ui: ^0.53.5
+  url_launcher: ^6.3.2
   auto_route: ^11.1.0
   gap: ^3.0.1
   path: ^1.9.1
   chinese_font_library: ^1.2.0
-  package_info_plus: ^9.0.0
+  package_info_plus: ^9.0.1
   updat: ^1.4.0
-  logger: ^2.6.2
+  logger: ^2.7.0
   intl: ^0.20.2
-
 
 workspace:
   - packages/xterm
@@ -48,9 +47,9 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^5.0.0
-  lean_builder: ^0.1.6
-  auto_route_generator: ^10.4.0
+  flutter_lints: ^6.0.0
+  lean_builder: ^0.1.7
+  auto_route_generator: ^10.5.0
 
 flutter:
   uses-material-design: true

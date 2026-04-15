@@ -33,19 +33,22 @@ class WorkspaceBloc extends HydratedBloc<WorkspaceEvent, WorkspaceState> {
     emit(
       state.copyWith(
         workspaces: updatedWorkspaces,
-        selectedWorkspaceId: state.selectedWorkspaceId ??
+        selectedWorkspaceId:
+            state.selectedWorkspaceId ??
             newWorkspace.id, // Auto-select if none selected
       ),
     );
   }
 
   void _onRemoveWorkspace(RemoveWorkspace event, Emitter<WorkspaceState> emit) {
-    final updatedWorkspaces =
-        state.workspaces.where((w) => w.id != event.id).toList();
+    final updatedWorkspaces = state.workspaces
+        .where((w) => w.id != event.id)
+        .toList();
     String? newSelectedId = state.selectedWorkspaceId;
     if (state.selectedWorkspaceId == event.id) {
-      newSelectedId =
-          updatedWorkspaces.isNotEmpty ? updatedWorkspaces.first.id : null;
+      newSelectedId = updatedWorkspaces.isNotEmpty
+          ? updatedWorkspaces.first.id
+          : null;
     }
     emit(
       WorkspaceState(
@@ -82,8 +85,9 @@ class WorkspaceBloc extends HydratedBloc<WorkspaceEvent, WorkspaceState> {
     Emitter<WorkspaceState> emit,
   ) {
     _updateWorkspace(event.workspaceId, emit, (workspace) {
-      final updatedTerminals =
-          workspace.terminals.where((t) => t.id != event.terminalId).toList();
+      final updatedTerminals = workspace.terminals
+          .where((t) => t.id != event.terminalId)
+          .toList();
       return workspace.copyWith(terminals: updatedTerminals);
     });
   }
@@ -116,10 +120,7 @@ class WorkspaceBloc extends HydratedBloc<WorkspaceEvent, WorkspaceState> {
     });
   }
 
-  void _onUpdateWorkspace(
-    UpdateWorkspace event,
-    Emitter<WorkspaceState> emit,
-  ) {
+  void _onUpdateWorkspace(UpdateWorkspace event, Emitter<WorkspaceState> emit) {
     final index = state.workspaces.indexWhere((w) => w.id == event.id);
     if (index == -1) return;
 

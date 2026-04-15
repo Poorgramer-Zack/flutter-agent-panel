@@ -42,8 +42,9 @@ class _TerminalComponentState extends State<TerminalComponent> {
   @override
   void initState() {
     super.initState();
-    _focusNode =
-        widget.interactive ? FocusNode() : FocusNode(canRequestFocus: false);
+    _focusNode = widget.interactive
+        ? FocusNode()
+        : FocusNode(canRequestFocus: false);
     _terminalController = xterm_ui.TerminalController();
 
     if (widget.interactive) {
@@ -146,12 +147,14 @@ class _TerminalComponentState extends State<TerminalComponent> {
           fontFamily: fontSettings.fontFamily,
           fontSize: fontSettings.fontSize,
           fontWeight: fontSettings.isBold ? FontWeight.bold : FontWeight.normal,
-          fontStyle:
-              fontSettings.isItalic ? FontStyle.italic : FontStyle.normal,
+          fontStyle: fontSettings.isItalic
+              ? FontStyle.italic
+              : FontStyle.normal,
         );
 
         // Check if we need to reload the theme
-        final needsReload = _cachedTheme == null ||
+        final needsReload =
+            _cachedTheme == null ||
             _lastThemeName != settings.terminalThemeName ||
             _lastCustomJson != settings.customTerminalThemeJson ||
             _lastBrightness != theme.brightness;
@@ -172,8 +175,9 @@ class _TerminalComponentState extends State<TerminalComponent> {
 
         if (settings.terminalCursorBlink !=
             widget.terminalNode.terminal.cursorBlinkMode) {
-          widget.terminalNode.terminal
-              .setCursorBlinkMode(settings.terminalCursorBlink);
+          widget.terminalNode.terminal.setCursorBlinkMode(
+            settings.terminalCursorBlink,
+          );
         }
 
         // PTY resize is now handled automatically via terminal.onResize callback
@@ -249,10 +253,12 @@ class _TerminalComponentState extends State<TerminalComponent> {
     if (themeData == null) {
       final service = TerminalThemeService.instance;
       if (brightness == Brightness.light) {
-        themeData = await service.getLightThemeByName(themeName) ??
+        themeData =
+            await service.getLightThemeByName(themeName) ??
             await service.getDefaultLightTheme();
       } else {
-        themeData = await service.getDarkThemeByName(themeName) ??
+        themeData =
+            await service.getDarkThemeByName(themeName) ??
             await service.getDefaultDarkTheme();
       }
     }

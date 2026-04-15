@@ -64,8 +64,6 @@ class _AppShellViewState extends State<AppShellView> {
 
   @override
   Widget build(BuildContext context) {
-    return const AppScaffold(
-      body: AutoRouter(),
-    );
+    return const AppScaffold(body: AutoRouter());
   }
 }

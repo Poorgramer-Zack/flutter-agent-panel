@@ -16,17 +16,16 @@ import 'dart:ffi' as ffi;
 class FlutterPtyBindings {
   /// Holds the symbol lookup function.
   final ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName)
-      _lookup;
+  _lookup;
 
   /// The symbols are looked up in [dynamicLibrary].
   FlutterPtyBindings(ffi.DynamicLibrary dynamicLibrary)
-      : _lookup = dynamicLibrary.lookup;
+    : _lookup = dynamicLibrary.lookup;
 
   /// The symbols are looked up with [lookup].
   FlutterPtyBindings.fromLookup(
-      ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName)
-          lookup)
-      : _lookup = lookup;
+    ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName) lookup,
+  ) : _lookup = lookup;
 
   /// \mainpage Dynamically Linked Dart API
   ///
@@ -38,19 +37,18 @@ class FlutterPtyBindings {
   ///
   /// Link `dart_api_dl.c` file into your library and invoke
   /// `Dart_InitializeApiDL` with `NativeApi.initializeApiDLData`.
-  int Dart_InitializeApiDL(
-    ffi.Pointer<ffi.Void> data,
-  ) {
-    return _Dart_InitializeApiDL(
-      data,
-    );
+  int Dart_InitializeApiDL(ffi.Pointer<ffi.Void> data) {
+    return _Dart_InitializeApiDL(data);
   }
 
   late final _Dart_InitializeApiDLPtr =
       _lookup<ffi.NativeFunction<ffi.IntPtr Function(ffi.Pointer<ffi.Void>)>>(
-          'Dart_InitializeApiDL');
-  late final _Dart_InitializeApiDL = _Dart_InitializeApiDLPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Void>)>();
+        'Dart_InitializeApiDL',
+      );
+  late final _Dart_InitializeApiDL =
+      _Dart_InitializeApiDLPtr.asFunction<
+        int Function(ffi.Pointer<ffi.Void>)
+      >();
 
   late final ffi.Pointer<Dart_PostCObject_Type> _Dart_PostCObject_DL =
       _lookup<Dart_PostCObject_Type>('Dart_PostCObject_DL');
@@ -103,20 +101,22 @@ class FlutterPtyBindings {
       _Dart_IsApiError_DL.value = value;
 
   late final ffi.Pointer<Dart_IsUnhandledExceptionError_Type>
-      _Dart_IsUnhandledExceptionError_DL =
+  _Dart_IsUnhandledExceptionError_DL =
       _lookup<Dart_IsUnhandledExceptionError_Type>(
-          'Dart_IsUnhandledExceptionError_DL');
+        'Dart_IsUnhandledExceptionError_DL',
+      );
 
   Dart_IsUnhandledExceptionError_Type get Dart_IsUnhandledExceptionError_DL =>
       _Dart_IsUnhandledExceptionError_DL.value;
 
   set Dart_IsUnhandledExceptionError_DL(
-          Dart_IsUnhandledExceptionError_Type value) =>
-      _Dart_IsUnhandledExceptionError_DL.value = value;
+    Dart_IsUnhandledExceptionError_Type value,
+  ) => _Dart_IsUnhandledExceptionError_DL.value = value;
 
   late final ffi.Pointer<Dart_IsCompilationError_Type>
-      _Dart_IsCompilationError_DL =
-      _lookup<Dart_IsCompilationError_Type>('Dart_IsCompilationError_DL');
+  _Dart_IsCompilationError_DL = _lookup<Dart_IsCompilationError_Type>(
+    'Dart_IsCompilationError_DL',
+  );
 
   Dart_IsCompilationError_Type get Dart_IsCompilationError_DL =>
       _Dart_IsCompilationError_DL.value;
@@ -142,8 +142,9 @@ class FlutterPtyBindings {
       _Dart_GetError_DL.value = value;
 
   late final ffi.Pointer<Dart_ErrorHasException_Type>
-      _Dart_ErrorHasException_DL =
-      _lookup<Dart_ErrorHasException_Type>('Dart_ErrorHasException_DL');
+  _Dart_ErrorHasException_DL = _lookup<Dart_ErrorHasException_Type>(
+    'Dart_ErrorHasException_DL',
+  );
 
   Dart_ErrorHasException_Type get Dart_ErrorHasException_DL =>
       _Dart_ErrorHasException_DL.value;
@@ -152,8 +153,9 @@ class FlutterPtyBindings {
       _Dart_ErrorHasException_DL.value = value;
 
   late final ffi.Pointer<Dart_ErrorGetException_Type>
-      _Dart_ErrorGetException_DL =
-      _lookup<Dart_ErrorGetException_Type>('Dart_ErrorGetException_DL');
+  _Dart_ErrorGetException_DL = _lookup<Dart_ErrorGetException_Type>(
+    'Dart_ErrorGetException_DL',
+  );
 
   Dart_ErrorGetException_Type get Dart_ErrorGetException_DL =>
       _Dart_ErrorGetException_DL.value;
@@ -162,8 +164,9 @@ class FlutterPtyBindings {
       _Dart_ErrorGetException_DL.value = value;
 
   late final ffi.Pointer<Dart_ErrorGetStackTrace_Type>
-      _Dart_ErrorGetStackTrace_DL =
-      _lookup<Dart_ErrorGetStackTrace_Type>('Dart_ErrorGetStackTrace_DL');
+  _Dart_ErrorGetStackTrace_DL = _lookup<Dart_ErrorGetStackTrace_Type>(
+    'Dart_ErrorGetStackTrace_DL',
+  );
 
   Dart_ErrorGetStackTrace_Type get Dart_ErrorGetStackTrace_DL =>
       _Dart_ErrorGetStackTrace_DL.value;
@@ -180,8 +183,9 @@ class FlutterPtyBindings {
       _Dart_NewApiError_DL.value = value;
 
   late final ffi.Pointer<Dart_NewCompilationError_Type>
-      _Dart_NewCompilationError_DL =
-      _lookup<Dart_NewCompilationError_Type>('Dart_NewCompilationError_DL');
+  _Dart_NewCompilationError_DL = _lookup<Dart_NewCompilationError_Type>(
+    'Dart_NewCompilationError_DL',
+  );
 
   Dart_NewCompilationError_Type get Dart_NewCompilationError_DL =>
       _Dart_NewCompilationError_DL.value;
@@ -190,16 +194,17 @@ class FlutterPtyBindings {
       _Dart_NewCompilationError_DL.value = value;
 
   late final ffi.Pointer<Dart_NewUnhandledExceptionError_Type>
-      _Dart_NewUnhandledExceptionError_DL =
+  _Dart_NewUnhandledExceptionError_DL =
       _lookup<Dart_NewUnhandledExceptionError_Type>(
-          'Dart_NewUnhandledExceptionError_DL');
+        'Dart_NewUnhandledExceptionError_DL',
+      );
 
   Dart_NewUnhandledExceptionError_Type get Dart_NewUnhandledExceptionError_DL =>
       _Dart_NewUnhandledExceptionError_DL.value;
 
   set Dart_NewUnhandledExceptionError_DL(
-          Dart_NewUnhandledExceptionError_Type value) =>
-      _Dart_NewUnhandledExceptionError_DL.value = value;
+    Dart_NewUnhandledExceptionError_Type value,
+  ) => _Dart_NewUnhandledExceptionError_DL.value = value;
 
   late final ffi.Pointer<Dart_PropagateError_Type> _Dart_PropagateError_DL =
       _lookup<Dart_PropagateError_Type>('Dart_PropagateError_DL');
@@ -211,8 +216,9 @@ class FlutterPtyBindings {
       _Dart_PropagateError_DL.value = value;
 
   late final ffi.Pointer<Dart_HandleFromPersistent_Type>
-      _Dart_HandleFromPersistent_DL =
-      _lookup<Dart_HandleFromPersistent_Type>('Dart_HandleFromPersistent_DL');
+  _Dart_HandleFromPersistent_DL = _lookup<Dart_HandleFromPersistent_Type>(
+    'Dart_HandleFromPersistent_DL',
+  );
 
   Dart_HandleFromPersistent_Type get Dart_HandleFromPersistent_DL =>
       _Dart_HandleFromPersistent_DL.value;
@@ -221,20 +227,22 @@ class FlutterPtyBindings {
       _Dart_HandleFromPersistent_DL.value = value;
 
   late final ffi.Pointer<Dart_HandleFromWeakPersistent_Type>
-      _Dart_HandleFromWeakPersistent_DL =
+  _Dart_HandleFromWeakPersistent_DL =
       _lookup<Dart_HandleFromWeakPersistent_Type>(
-          'Dart_HandleFromWeakPersistent_DL');
+        'Dart_HandleFromWeakPersistent_DL',
+      );
 
   Dart_HandleFromWeakPersistent_Type get Dart_HandleFromWeakPersistent_DL =>
       _Dart_HandleFromWeakPersistent_DL.value;
 
   set Dart_HandleFromWeakPersistent_DL(
-          Dart_HandleFromWeakPersistent_Type value) =>
-      _Dart_HandleFromWeakPersistent_DL.value = value;
+    Dart_HandleFromWeakPersistent_Type value,
+  ) => _Dart_HandleFromWeakPersistent_DL.value = value;
 
   late final ffi.Pointer<Dart_NewPersistentHandle_Type>
-      _Dart_NewPersistentHandle_DL =
-      _lookup<Dart_NewPersistentHandle_Type>('Dart_NewPersistentHandle_DL');
+  _Dart_NewPersistentHandle_DL = _lookup<Dart_NewPersistentHandle_Type>(
+    'Dart_NewPersistentHandle_DL',
+  );
 
   Dart_NewPersistentHandle_Type get Dart_NewPersistentHandle_DL =>
       _Dart_NewPersistentHandle_DL.value;
@@ -243,8 +251,9 @@ class FlutterPtyBindings {
       _Dart_NewPersistentHandle_DL.value = value;
 
   late final ffi.Pointer<Dart_SetPersistentHandle_Type>
-      _Dart_SetPersistentHandle_DL =
-      _lookup<Dart_SetPersistentHandle_Type>('Dart_SetPersistentHandle_DL');
+  _Dart_SetPersistentHandle_DL = _lookup<Dart_SetPersistentHandle_Type>(
+    'Dart_SetPersistentHandle_DL',
+  );
 
   Dart_SetPersistentHandle_Type get Dart_SetPersistentHandle_DL =>
       _Dart_SetPersistentHandle_DL.value;
@@ -253,9 +262,9 @@ class FlutterPtyBindings {
       _Dart_SetPersistentHandle_DL.value = value;
 
   late final ffi.Pointer<Dart_DeletePersistentHandle_Type>
-      _Dart_DeletePersistentHandle_DL =
-      _lookup<Dart_DeletePersistentHandle_Type>(
-          'Dart_DeletePersistentHandle_DL');
+  _Dart_DeletePersistentHandle_DL = _lookup<Dart_DeletePersistentHandle_Type>(
+    'Dart_DeletePersistentHandle_DL',
+  );
 
   Dart_DeletePersistentHandle_Type get Dart_DeletePersistentHandle_DL =>
       _Dart_DeletePersistentHandle_DL.value;
@@ -264,32 +273,34 @@ class FlutterPtyBindings {
       _Dart_DeletePersistentHandle_DL.value = value;
 
   late final ffi.Pointer<Dart_NewWeakPersistentHandle_Type>
-      _Dart_NewWeakPersistentHandle_DL =
-      _lookup<Dart_NewWeakPersistentHandle_Type>(
-          'Dart_NewWeakPersistentHandle_DL');
+  _Dart_NewWeakPersistentHandle_DL = _lookup<Dart_NewWeakPersistentHandle_Type>(
+    'Dart_NewWeakPersistentHandle_DL',
+  );
 
   Dart_NewWeakPersistentHandle_Type get Dart_NewWeakPersistentHandle_DL =>
       _Dart_NewWeakPersistentHandle_DL.value;
 
   set Dart_NewWeakPersistentHandle_DL(
-          Dart_NewWeakPersistentHandle_Type value) =>
-      _Dart_NewWeakPersistentHandle_DL.value = value;
+    Dart_NewWeakPersistentHandle_Type value,
+  ) => _Dart_NewWeakPersistentHandle_DL.value = value;
 
   late final ffi.Pointer<Dart_DeleteWeakPersistentHandle_Type>
-      _Dart_DeleteWeakPersistentHandle_DL =
+  _Dart_DeleteWeakPersistentHandle_DL =
       _lookup<Dart_DeleteWeakPersistentHandle_Type>(
-          'Dart_DeleteWeakPersistentHandle_DL');
+        'Dart_DeleteWeakPersistentHandle_DL',
+      );
 
   Dart_DeleteWeakPersistentHandle_Type get Dart_DeleteWeakPersistentHandle_DL =>
       _Dart_DeleteWeakPersistentHandle_DL.value;
 
   set Dart_DeleteWeakPersistentHandle_DL(
-          Dart_DeleteWeakPersistentHandle_Type value) =>
-      _Dart_DeleteWeakPersistentHandle_DL.value = value;
+    Dart_DeleteWeakPersistentHandle_Type value,
+  ) => _Dart_DeleteWeakPersistentHandle_DL.value = value;
 
   late final ffi.Pointer<Dart_UpdateExternalSize_Type>
-      _Dart_UpdateExternalSize_DL =
-      _lookup<Dart_UpdateExternalSize_Type>('Dart_UpdateExternalSize_DL');
+  _Dart_UpdateExternalSize_DL = _lookup<Dart_UpdateExternalSize_Type>(
+    'Dart_UpdateExternalSize_DL',
+  );
 
   Dart_UpdateExternalSize_Type get Dart_UpdateExternalSize_DL =>
       _Dart_UpdateExternalSize_DL.value;
@@ -298,8 +309,9 @@ class FlutterPtyBindings {
       _Dart_UpdateExternalSize_DL.value = value;
 
   late final ffi.Pointer<Dart_NewFinalizableHandle_Type>
-      _Dart_NewFinalizableHandle_DL =
-      _lookup<Dart_NewFinalizableHandle_Type>('Dart_NewFinalizableHandle_DL');
+  _Dart_NewFinalizableHandle_DL = _lookup<Dart_NewFinalizableHandle_Type>(
+    'Dart_NewFinalizableHandle_DL',
+  );
 
   Dart_NewFinalizableHandle_Type get Dart_NewFinalizableHandle_DL =>
       _Dart_NewFinalizableHandle_DL.value;
@@ -308,29 +320,30 @@ class FlutterPtyBindings {
       _Dart_NewFinalizableHandle_DL.value = value;
 
   late final ffi.Pointer<Dart_DeleteFinalizableHandle_Type>
-      _Dart_DeleteFinalizableHandle_DL =
-      _lookup<Dart_DeleteFinalizableHandle_Type>(
-          'Dart_DeleteFinalizableHandle_DL');
+  _Dart_DeleteFinalizableHandle_DL = _lookup<Dart_DeleteFinalizableHandle_Type>(
+    'Dart_DeleteFinalizableHandle_DL',
+  );
 
   Dart_DeleteFinalizableHandle_Type get Dart_DeleteFinalizableHandle_DL =>
       _Dart_DeleteFinalizableHandle_DL.value;
 
   set Dart_DeleteFinalizableHandle_DL(
-          Dart_DeleteFinalizableHandle_Type value) =>
-      _Dart_DeleteFinalizableHandle_DL.value = value;
+    Dart_DeleteFinalizableHandle_Type value,
+  ) => _Dart_DeleteFinalizableHandle_DL.value = value;
 
   late final ffi.Pointer<Dart_UpdateFinalizableExternalSize_Type>
-      _Dart_UpdateFinalizableExternalSize_DL =
+  _Dart_UpdateFinalizableExternalSize_DL =
       _lookup<Dart_UpdateFinalizableExternalSize_Type>(
-          'Dart_UpdateFinalizableExternalSize_DL');
+        'Dart_UpdateFinalizableExternalSize_DL',
+      );
 
   Dart_UpdateFinalizableExternalSize_Type
-      get Dart_UpdateFinalizableExternalSize_DL =>
-          _Dart_UpdateFinalizableExternalSize_DL.value;
+  get Dart_UpdateFinalizableExternalSize_DL =>
+      _Dart_UpdateFinalizableExternalSize_DL.value;
 
   set Dart_UpdateFinalizableExternalSize_DL(
-          Dart_UpdateFinalizableExternalSize_Type value) =>
-      _Dart_UpdateFinalizableExternalSize_DL.value = value;
+    Dart_UpdateFinalizableExternalSize_Type value,
+  ) => _Dart_UpdateFinalizableExternalSize_DL.value = value;
 
   late final ffi.Pointer<Dart_Post_Type> _Dart_Post_DL =
       _lookup<Dart_Post_Type>('Dart_Post_DL');
@@ -372,18 +385,16 @@ class FlutterPtyBindings {
   set Dart_ExitScope_DL(Dart_ExitScope_Type value) =>
       _Dart_ExitScope_DL.value = value;
 
-  ffi.Pointer<PtyHandle> pty_create(
-    ffi.Pointer<PtyOptions> options,
-  ) {
-    return _pty_create(
-      options,
-    );
+  ffi.Pointer<PtyHandle> pty_create(ffi.Pointer<PtyOptions> options) {
+    return _pty_create(options);
   }
 
-  late final _pty_createPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<PtyHandle> Function(
-              ffi.Pointer<PtyOptions>)>>('pty_create');
+  late final _pty_createPtr =
+      _lookup<
+        ffi.NativeFunction<
+          ffi.Pointer<PtyHandle> Function(ffi.Pointer<PtyOptions>)
+        >
+      >('pty_create');
   late final _pty_create = _pty_createPtr
       .asFunction<ffi.Pointer<PtyHandle> Function(ffi.Pointer<PtyOptions>)>();
 
@@ -392,66 +403,58 @@ class FlutterPtyBindings {
     ffi.Pointer<ffi.Char> buffer,
     int length,
   ) {
-    return _pty_write(
-      handle,
-      buffer,
-      length,
-    );
+    return _pty_write(handle, buffer, length);
   }
 
-  late final _pty_writePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Pointer<PtyHandle>, ffi.Pointer<ffi.Char>,
-              ffi.Int)>>('pty_write');
-  late final _pty_write = _pty_writePtr.asFunction<
-      void Function(ffi.Pointer<PtyHandle>, ffi.Pointer<ffi.Char>, int)>();
+  late final _pty_writePtr =
+      _lookup<
+        ffi.NativeFunction<
+          ffi.Void Function(
+            ffi.Pointer<PtyHandle>,
+            ffi.Pointer<ffi.Char>,
+            ffi.Int,
+          )
+        >
+      >('pty_write');
+  late final _pty_write = _pty_writePtr
+      .asFunction<
+        void Function(ffi.Pointer<PtyHandle>, ffi.Pointer<ffi.Char>, int)
+      >();
 
-  void pty_ack_read(
-    ffi.Pointer<PtyHandle> handle,
-  ) {
-    return _pty_ack_read(
-      handle,
-    );
+  void pty_ack_read(ffi.Pointer<PtyHandle> handle) {
+    return _pty_ack_read(handle);
   }
 
   late final _pty_ack_readPtr =
       _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<PtyHandle>)>>(
-          'pty_ack_read');
-  late final _pty_ack_read =
-      _pty_ack_readPtr.asFunction<void Function(ffi.Pointer<PtyHandle>)>();
+        'pty_ack_read',
+      );
+  late final _pty_ack_read = _pty_ack_readPtr
+      .asFunction<void Function(ffi.Pointer<PtyHandle>)>();
 
-  int pty_resize(
-    ffi.Pointer<PtyHandle> handle,
-    int rows,
-    int cols,
-  ) {
-    return _pty_resize(
-      handle,
-      rows,
-      cols,
-    );
+  int pty_resize(ffi.Pointer<PtyHandle> handle, int rows, int cols) {
+    return _pty_resize(handle, rows, cols);
   }
 
-  late final _pty_resizePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(
-              ffi.Pointer<PtyHandle>, ffi.Int, ffi.Int)>>('pty_resize');
+  late final _pty_resizePtr =
+      _lookup<
+        ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<PtyHandle>, ffi.Int, ffi.Int)
+        >
+      >('pty_resize');
   late final _pty_resize = _pty_resizePtr
       .asFunction<int Function(ffi.Pointer<PtyHandle>, int, int)>();
 
-  int pty_getpid(
-    ffi.Pointer<PtyHandle> handle,
-  ) {
-    return _pty_getpid(
-      handle,
-    );
+  int pty_getpid(ffi.Pointer<PtyHandle> handle) {
+    return _pty_getpid(handle);
   }
 
   late final _pty_getpidPtr =
       _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<PtyHandle>)>>(
-          'pty_getpid');
-  late final _pty_getpid =
-      _pty_getpidPtr.asFunction<int Function(ffi.Pointer<PtyHandle>)>();
+        'pty_getpid',
+      );
+  late final _pty_getpid = _pty_getpidPtr
+      .asFunction<int Function(ffi.Pointer<PtyHandle>)>();
 
   ffi.Pointer<ffi.Char> pty_error() {
     return _pty_error();
@@ -459,15 +462,21 @@ class FlutterPtyBindings {
 
   late final _pty_errorPtr =
       _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function()>>(
-          'pty_error');
-  late final _pty_error =
-      _pty_errorPtr.asFunction<ffi.Pointer<ffi.Char> Function()>();
+        'pty_error',
+      );
+  late final _pty_error = _pty_errorPtr
+      .asFunction<ffi.Pointer<ffi.Char> Function()>();
 }
 
-typedef Dart_PostCObject_Type = ffi.Pointer<
-    ffi.NativeFunction<
+typedef Dart_PostCObject_Type =
+    ffi.Pointer<
+      ffi.NativeFunction<
         ffi.Bool Function(
-            Dart_Port_DL port_id, ffi.Pointer<Dart_CObject> message)>>;
+          Dart_Port_DL port_id,
+          ffi.Pointer<Dart_CObject> message,
+        )
+      >
+    >;
 
 /// ============================================================================
 /// IMPORTANT! Never update these signatures without properly updating
@@ -631,10 +640,15 @@ final class UnnamedStruct5 extends ffi.Struct {
 
 /// These structs are versioned by DART_API_DL_MAJOR_VERSION, bump the
 /// version when changing this struct.
-typedef Dart_HandleFinalizer = ffi.Pointer<
-    ffi.NativeFunction<
-        ffi.Void Function(ffi.Pointer<ffi.Void> isolate_callback_data,
-            ffi.Pointer<ffi.Void> peer)>>;
+typedef Dart_HandleFinalizer =
+    ffi.Pointer<
+      ffi.NativeFunction<
+        ffi.Void Function(
+          ffi.Pointer<ffi.Void> isolate_callback_data,
+          ffi.Pointer<ffi.Void> peer,
+        )
+      >
+    >;
 
 final class UnnamedStruct6 extends ffi.Struct {
   @ffi.IntPtr()
@@ -646,108 +660,161 @@ final class UnnamedStruct6 extends ffi.Struct {
   external Dart_HandleFinalizer callback;
 }
 
-typedef Dart_PostInteger_Type = ffi.Pointer<
-    ffi.NativeFunction<
-        ffi.Bool Function(Dart_Port_DL port_id, ffi.Int64 message)>>;
-typedef Dart_NewNativePort_Type = ffi.Pointer<
-    ffi.NativeFunction<
+typedef Dart_PostInteger_Type =
+    ffi.Pointer<
+      ffi.NativeFunction<
+        ffi.Bool Function(Dart_Port_DL port_id, ffi.Int64 message)
+      >
+    >;
+typedef Dart_NewNativePort_Type =
+    ffi.Pointer<
+      ffi.NativeFunction<
         Dart_Port_DL Function(
-            ffi.Pointer<ffi.Char> name,
-            Dart_NativeMessageHandler_DL handler,
-            ffi.Bool handle_concurrently)>>;
-typedef Dart_NativeMessageHandler_DL = ffi.Pointer<
-    ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> name,
+          Dart_NativeMessageHandler_DL handler,
+          ffi.Bool handle_concurrently,
+        )
+      >
+    >;
+typedef Dart_NativeMessageHandler_DL =
+    ffi.Pointer<
+      ffi.NativeFunction<
         ffi.Void Function(
-            Dart_Port_DL dest_port_id, ffi.Pointer<Dart_CObject> message)>>;
-typedef Dart_CloseNativePort_Type = ffi.Pointer<
-    ffi.NativeFunction<ffi.Bool Function(Dart_Port_DL native_port_id)>>;
-typedef Dart_IsError_Type
-    = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(ffi.Handle handle)>>;
-typedef Dart_IsApiError_Type
-    = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(ffi.Handle handle)>>;
-typedef Dart_IsUnhandledExceptionError_Type
-    = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(ffi.Handle handle)>>;
-typedef Dart_IsCompilationError_Type
-    = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(ffi.Handle handle)>>;
-typedef Dart_IsFatalError_Type
-    = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(ffi.Handle handle)>>;
-typedef Dart_GetError_Type = ffi.Pointer<
-    ffi.NativeFunction<ffi.Pointer<ffi.Char> Function(ffi.Handle handle)>>;
-typedef Dart_ErrorHasException_Type
-    = ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(ffi.Handle handle)>>;
-typedef Dart_ErrorGetException_Type
-    = ffi.Pointer<ffi.NativeFunction<ffi.Handle Function(ffi.Handle handle)>>;
-typedef Dart_ErrorGetStackTrace_Type
-    = ffi.Pointer<ffi.NativeFunction<ffi.Handle Function(ffi.Handle handle)>>;
-typedef Dart_NewApiError_Type = ffi.Pointer<
-    ffi.NativeFunction<ffi.Handle Function(ffi.Pointer<ffi.Char> error)>>;
-typedef Dart_NewCompilationError_Type = ffi.Pointer<
-    ffi.NativeFunction<ffi.Handle Function(ffi.Pointer<ffi.Char> error)>>;
-typedef Dart_NewUnhandledExceptionError_Type = ffi
-    .Pointer<ffi.NativeFunction<ffi.Handle Function(ffi.Handle exception)>>;
-typedef Dart_PropagateError_Type
-    = ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Handle handle)>>;
-typedef Dart_HandleFromPersistent_Type
-    = ffi.Pointer<ffi.NativeFunction<ffi.Handle Function(ffi.Handle object)>>;
-typedef Dart_HandleFromWeakPersistent_Type = ffi.Pointer<
-    ffi.NativeFunction<ffi.Handle Function(Dart_WeakPersistentHandle object)>>;
+          Dart_Port_DL dest_port_id,
+          ffi.Pointer<Dart_CObject> message,
+        )
+      >
+    >;
+typedef Dart_CloseNativePort_Type =
+    ffi.Pointer<
+      ffi.NativeFunction<ffi.Bool Function(Dart_Port_DL native_port_id)>
+    >;
+typedef Dart_IsError_Type =
+    ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(ffi.Handle handle)>>;
+typedef Dart_IsApiError_Type =
+    ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(ffi.Handle handle)>>;
+typedef Dart_IsUnhandledExceptionError_Type =
+    ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(ffi.Handle handle)>>;
+typedef Dart_IsCompilationError_Type =
+    ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(ffi.Handle handle)>>;
+typedef Dart_IsFatalError_Type =
+    ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(ffi.Handle handle)>>;
+typedef Dart_GetError_Type =
+    ffi.Pointer<
+      ffi.NativeFunction<ffi.Pointer<ffi.Char> Function(ffi.Handle handle)>
+    >;
+typedef Dart_ErrorHasException_Type =
+    ffi.Pointer<ffi.NativeFunction<ffi.Bool Function(ffi.Handle handle)>>;
+typedef Dart_ErrorGetException_Type =
+    ffi.Pointer<ffi.NativeFunction<ffi.Handle Function(ffi.Handle handle)>>;
+typedef Dart_ErrorGetStackTrace_Type =
+    ffi.Pointer<ffi.NativeFunction<ffi.Handle Function(ffi.Handle handle)>>;
+typedef Dart_NewApiError_Type =
+    ffi.Pointer<
+      ffi.NativeFunction<ffi.Handle Function(ffi.Pointer<ffi.Char> error)>
+    >;
+typedef Dart_NewCompilationError_Type =
+    ffi.Pointer<
+      ffi.NativeFunction<ffi.Handle Function(ffi.Pointer<ffi.Char> error)>
+    >;
+typedef Dart_NewUnhandledExceptionError_Type =
+    ffi.Pointer<ffi.NativeFunction<ffi.Handle Function(ffi.Handle exception)>>;
+typedef Dart_PropagateError_Type =
+    ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Handle handle)>>;
+typedef Dart_HandleFromPersistent_Type =
+    ffi.Pointer<ffi.NativeFunction<ffi.Handle Function(ffi.Handle object)>>;
+typedef Dart_HandleFromWeakPersistent_Type =
+    ffi.Pointer<
+      ffi.NativeFunction<ffi.Handle Function(Dart_WeakPersistentHandle object)>
+    >;
 typedef Dart_WeakPersistentHandle = ffi.Pointer<_Dart_WeakPersistentHandle>;
 
 final class _Dart_WeakPersistentHandle extends ffi.Opaque {}
 
-typedef Dart_NewPersistentHandle_Type
-    = ffi.Pointer<ffi.NativeFunction<ffi.Handle Function(ffi.Handle object)>>;
-typedef Dart_SetPersistentHandle_Type = ffi.Pointer<
-    ffi.NativeFunction<ffi.Void Function(ffi.Handle obj1, ffi.Handle obj2)>>;
-typedef Dart_DeletePersistentHandle_Type
-    = ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Handle object)>>;
-typedef Dart_NewWeakPersistentHandle_Type = ffi.Pointer<
-    ffi.NativeFunction<
+typedef Dart_NewPersistentHandle_Type =
+    ffi.Pointer<ffi.NativeFunction<ffi.Handle Function(ffi.Handle object)>>;
+typedef Dart_SetPersistentHandle_Type =
+    ffi.Pointer<
+      ffi.NativeFunction<ffi.Void Function(ffi.Handle obj1, ffi.Handle obj2)>
+    >;
+typedef Dart_DeletePersistentHandle_Type =
+    ffi.Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Handle object)>>;
+typedef Dart_NewWeakPersistentHandle_Type =
+    ffi.Pointer<
+      ffi.NativeFunction<
         Dart_WeakPersistentHandle Function(
-            ffi.Handle object,
-            ffi.Pointer<ffi.Void> peer,
-            ffi.IntPtr external_allocation_size,
-            Dart_HandleFinalizer callback)>>;
-typedef Dart_DeleteWeakPersistentHandle_Type = ffi.Pointer<
-    ffi.NativeFunction<ffi.Void Function(Dart_WeakPersistentHandle object)>>;
-typedef Dart_UpdateExternalSize_Type = ffi.Pointer<
-    ffi.NativeFunction<
-        ffi.Void Function(Dart_WeakPersistentHandle object,
-            ffi.IntPtr external_allocation_size)>>;
-typedef Dart_NewFinalizableHandle_Type = ffi.Pointer<
-    ffi.NativeFunction<
+          ffi.Handle object,
+          ffi.Pointer<ffi.Void> peer,
+          ffi.IntPtr external_allocation_size,
+          Dart_HandleFinalizer callback,
+        )
+      >
+    >;
+typedef Dart_DeleteWeakPersistentHandle_Type =
+    ffi.Pointer<
+      ffi.NativeFunction<ffi.Void Function(Dart_WeakPersistentHandle object)>
+    >;
+typedef Dart_UpdateExternalSize_Type =
+    ffi.Pointer<
+      ffi.NativeFunction<
+        ffi.Void Function(
+          Dart_WeakPersistentHandle object,
+          ffi.IntPtr external_allocation_size,
+        )
+      >
+    >;
+typedef Dart_NewFinalizableHandle_Type =
+    ffi.Pointer<
+      ffi.NativeFunction<
         Dart_FinalizableHandle Function(
-            ffi.Handle object,
-            ffi.Pointer<ffi.Void> peer,
-            ffi.IntPtr external_allocation_size,
-            Dart_HandleFinalizer callback)>>;
+          ffi.Handle object,
+          ffi.Pointer<ffi.Void> peer,
+          ffi.IntPtr external_allocation_size,
+          Dart_HandleFinalizer callback,
+        )
+      >
+    >;
 typedef Dart_FinalizableHandle = ffi.Pointer<_Dart_FinalizableHandle>;
 
 final class _Dart_FinalizableHandle extends ffi.Opaque {}
 
-typedef Dart_DeleteFinalizableHandle_Type = ffi.Pointer<
-    ffi.NativeFunction<
+typedef Dart_DeleteFinalizableHandle_Type =
+    ffi.Pointer<
+      ffi.NativeFunction<
         ffi.Void Function(
-            Dart_FinalizableHandle object, ffi.Handle strong_ref_to_object)>>;
-typedef Dart_UpdateFinalizableExternalSize_Type = ffi.Pointer<
-    ffi.NativeFunction<
+          Dart_FinalizableHandle object,
+          ffi.Handle strong_ref_to_object,
+        )
+      >
+    >;
+typedef Dart_UpdateFinalizableExternalSize_Type =
+    ffi.Pointer<
+      ffi.NativeFunction<
         ffi.Void Function(
-            Dart_FinalizableHandle object,
-            ffi.Handle strong_ref_to_object,
-            ffi.IntPtr external_allocation_size)>>;
-typedef Dart_Post_Type = ffi.Pointer<
-    ffi.NativeFunction<
-        ffi.Bool Function(Dart_Port_DL port_id, ffi.Handle object)>>;
-typedef Dart_NewSendPort_Type = ffi
-    .Pointer<ffi.NativeFunction<ffi.Handle Function(Dart_Port_DL port_id)>>;
-typedef Dart_SendPortGetId_Type = ffi.Pointer<
-    ffi.NativeFunction<
-        ffi.Handle Function(
-            ffi.Handle port, ffi.Pointer<Dart_Port_DL> port_id)>>;
-typedef Dart_EnterScope_Type
-    = ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>>;
-typedef Dart_ExitScope_Type
-    = ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>>;
+          Dart_FinalizableHandle object,
+          ffi.Handle strong_ref_to_object,
+          ffi.IntPtr external_allocation_size,
+        )
+      >
+    >;
+typedef Dart_Post_Type =
+    ffi.Pointer<
+      ffi.NativeFunction<
+        ffi.Bool Function(Dart_Port_DL port_id, ffi.Handle object)
+      >
+    >;
+typedef Dart_NewSendPort_Type =
+    ffi.Pointer<ffi.NativeFunction<ffi.Handle Function(Dart_Port_DL port_id)>>;
+typedef Dart_SendPortGetId_Type =
+    ffi.Pointer<
+      ffi.NativeFunction<
+        ffi.Handle Function(ffi.Handle port, ffi.Pointer<Dart_Port_DL> port_id)
+      >
+    >;
+typedef Dart_EnterScope_Type =
+    ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>>;
+typedef Dart_ExitScope_Type =
+    ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>>;
 
 final class PtyOptions extends ffi.Struct {
   @ffi.Int()

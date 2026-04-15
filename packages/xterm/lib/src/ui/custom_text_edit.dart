@@ -276,7 +276,8 @@ class CustomTextEditState extends State<CustomTextEdit> with TextInputClient {
     _currentEditingState = value;
 
     print(
-        'updateEditingValue: text="${value.text}", composing=${value.composing}, selection=${value.selection}');
+      'updateEditingValue: text="${value.text}", composing=${value.composing}, selection=${value.selection}',
+    );
     print('oldState: text="${oldState.text}", composing=${oldState.composing}');
     print('_textBeforeComposition: $_textBeforeComposition');
 

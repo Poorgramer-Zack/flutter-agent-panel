@@ -23,10 +23,12 @@ class WorkspaceSearchField extends StatelessWidget {
     }
 
     final query = textEditingValue.text.toLowerCase();
-    return workspaces.where((workspace) {
-      return workspace.name.toLowerCase().contains(query) ||
-          workspace.tags.any((tag) => tag.toLowerCase().contains(query));
-    }).take(5);
+    return workspaces
+        .where((workspace) {
+          return workspace.name.toLowerCase().contains(query) ||
+              workspace.tags.any((tag) => tag.toLowerCase().contains(query));
+        })
+        .take(5);
   }
 
   @override
@@ -42,62 +44,60 @@ class WorkspaceSearchField extends StatelessWidget {
             optionsBuilder: _optionsBuilder,
             displayStringForOption: (workspace) => workspace.name,
             onSelected: (workspace) => onFilter(workspace.name),
-            fieldViewBuilder: (
-              context,
-              textEditingController,
-              focusNode,
-              onFieldSubmitted,
-            ) {
-              return TextField(
-                controller: textEditingController,
-                focusNode: focusNode,
-                decoration: InputDecoration(
-                  hintText: l10n.searchWorkspaces,
-                  hintStyle: theme.textTheme.small.copyWith(
-                    color: theme.colorScheme.mutedForeground,
-                  ),
-                  prefixIcon: Icon(
-                    LucideIcons.search,
-                    size: 14,
-                    color: theme.colorScheme.mutedForeground,
-                  ),
-                  suffixIcon: textEditingController.text.isNotEmpty
-                      ? GestureDetector(
-                          onTap: () {
-                            textEditingController.clear();
-                            onFilter('');
-                          },
-                          child: Icon(
-                            LucideIcons.x,
-                            size: 14,
-                            color: theme.colorScheme.mutedForeground,
-                          ),
-                        )
-                      : null,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(6),
-                    borderSide: BorderSide(color: theme.colorScheme.border),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(6),
-                    borderSide: BorderSide(color: theme.colorScheme.border),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(6),
-                    borderSide: BorderSide(color: theme.colorScheme.primary),
-                  ),
-                  filled: true,
-                  fillColor: theme.colorScheme.background,
-                  contentPadding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 8,
-                  ),
-                  isDense: true,
-                ),
-                style: theme.textTheme.small,
-                onChanged: onFilter,
-              );
-            },
+            fieldViewBuilder:
+                (context, textEditingController, focusNode, onFieldSubmitted) {
+                  return TextField(
+                    controller: textEditingController,
+                    focusNode: focusNode,
+                    decoration: InputDecoration(
+                      hintText: l10n.searchWorkspaces,
+                      hintStyle: theme.textTheme.small.copyWith(
+                        color: theme.colorScheme.mutedForeground,
+                      ),
+                      prefixIcon: Icon(
+                        LucideIcons.search,
+                        size: 14,
+                        color: theme.colorScheme.mutedForeground,
+                      ),
+                      suffixIcon: textEditingController.text.isNotEmpty
+                          ? GestureDetector(
+                              onTap: () {
+                                textEditingController.clear();
+                                onFilter('');
+                              },
+                              child: Icon(
+                                LucideIcons.x,
+                                size: 14,
+                                color: theme.colorScheme.mutedForeground,
+                              ),
+                            )
+                          : null,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(6),
+                        borderSide: BorderSide(color: theme.colorScheme.border),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(6),
+                        borderSide: BorderSide(color: theme.colorScheme.border),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(6),
+                        borderSide: BorderSide(
+                          color: theme.colorScheme.primary,
+                        ),
+                      ),
+                      filled: true,
+                      fillColor: theme.colorScheme.background,
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 8,
+                      ),
+                      isDense: true,
+                    ),
+                    style: theme.textTheme.small,
+                    onChanged: onFilter,
+                  );
+                },
             optionsViewBuilder: (context, onSelected, options) {
               // Use parent width minus padding
               final optionsWidth = constraints.maxWidth - 16;

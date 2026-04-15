@@ -20,10 +20,10 @@ class PointerInputs {
   const PointerInputs.none() : inputs = const <PointerInput>{};
 
   const PointerInputs.all()
-      : inputs = const <PointerInput>{
-          PointerInput.tap,
-          PointerInput.scroll,
-          PointerInput.drag,
-          PointerInput.move,
-        };
+    : inputs = const <PointerInput>{
+        PointerInput.tap,
+        PointerInput.scroll,
+        PointerInput.drag,
+        PointerInput.move,
+      };
 }

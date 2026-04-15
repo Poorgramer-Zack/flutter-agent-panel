@@ -14,49 +14,49 @@ enum AgentPreset {
 
 extension AgentPresetX on AgentPreset {
   String get displayName => switch (this) {
-        AgentPreset.claude => 'Claude Code',
-        AgentPreset.qwen => 'Qwen Code',
-        AgentPreset.codex => 'Codex CLI',
-        AgentPreset.gemini => 'Gemini CLI',
-        AgentPreset.opencode => 'OpenCode',
-        AgentPreset.githubCopilot => 'Github Copilot',
-        AgentPreset.custom => 'Custom',
-      };
+    AgentPreset.claude => 'Claude Code',
+    AgentPreset.qwen => 'Qwen Code',
+    AgentPreset.codex => 'Codex CLI',
+    AgentPreset.gemini => 'Gemini CLI',
+    AgentPreset.opencode => 'OpenCode',
+    AgentPreset.githubCopilot => 'Github Copilot',
+    AgentPreset.custom => 'Custom',
+  };
 
   String get defaultCommand => switch (this) {
-        AgentPreset.claude => 'claude',
-        AgentPreset.qwen => 'qwen',
-        AgentPreset.codex => 'codex',
-        AgentPreset.gemini => 'gemini',
-        AgentPreset.opencode => 'opencode',
-        AgentPreset.githubCopilot => 'copilot',
-        AgentPreset.custom => '',
-      };
+    AgentPreset.claude => 'claude',
+    AgentPreset.qwen => 'qwen',
+    AgentPreset.codex => 'codex',
+    AgentPreset.gemini => 'gemini',
+    AgentPreset.opencode => 'opencode',
+    AgentPreset.githubCopilot => 'copilot',
+    AgentPreset.custom => '',
+  };
 
   String get defaultInstallCommand => switch (this) {
-        AgentPreset.claude => 'npm install -g @anthropic-ai/claude-code',
-        AgentPreset.qwen => 'npm install -g @qwen-code/qwen-code',
-        AgentPreset.codex => 'npm i -g @openai/codex',
-        AgentPreset.gemini => 'npm install -g @google/gemini-cli',
-        AgentPreset.opencode => 'npm install -g opencode-ai',
-        AgentPreset.githubCopilot => 'npm install -g @github/copilot',
-        AgentPreset.custom => '',
-      };
+    AgentPreset.claude => 'npm install -g @anthropic-ai/claude-code',
+    AgentPreset.qwen => 'npm install -g @qwen-code/qwen-code',
+    AgentPreset.codex => 'npm i -g @openai/codex',
+    AgentPreset.gemini => 'npm install -g @google/gemini-cli',
+    AgentPreset.opencode => 'npm install -g opencode-ai',
+    AgentPreset.githubCopilot => 'npm install -g @github/copilot',
+    AgentPreset.custom => '',
+  };
 
   String? get iconAssetPath => switch (this) {
-        AgentPreset.claude => Assets.claudeLogo,
-        AgentPreset.qwen => Assets.qwenLogo,
-        AgentPreset.codex => Assets.chatgptLogo,
-        AgentPreset.gemini => Assets.geminiLogo,
-        AgentPreset.opencode => Assets.opencodeLogo,
-        AgentPreset.githubCopilot => Assets.githubCopilotLogo,
-        AgentPreset.custom => null,
-      };
+    AgentPreset.claude => Assets.claudeLogo,
+    AgentPreset.qwen => Assets.qwenLogo,
+    AgentPreset.codex => Assets.chatgptLogo,
+    AgentPreset.gemini => Assets.geminiLogo,
+    AgentPreset.opencode => Assets.opencodeLogo,
+    AgentPreset.githubCopilot => Assets.githubCopilotLogo,
+    AgentPreset.custom => null,
+  };
 
   List<String> get defaultArgs => switch (this) {
-        AgentPreset.githubCopilot => ['--banner'],
-        _ => const [],
-      };
+    AgentPreset.githubCopilot => ['--banner'],
+    _ => const [],
+  };
 }
 
 class AgentConfig extends Equatable {
@@ -85,8 +85,9 @@ class AgentConfig extends Equatable {
       command: json['command'] as String,
       args:
           (json['args'] as List<dynamic>?)?.map((e) => e as String).toList() ??
-              const [],
-      env: (json['env'] as Map<String, dynamic>?)?.map(
+          const [],
+      env:
+          (json['env'] as Map<String, dynamic>?)?.map(
             (k, v) => MapEntry(k, v as String),
           ) ??
           const {},
@@ -153,15 +154,15 @@ class AgentConfig extends Equatable {
 
   @override
   List<Object?> get props => [
-        id,
-        preset,
-        name,
-        command,
-        args,
-        env,
-        enabled,
-        customIconPath,
-        customTextColor,
-        shellId,
-      ];
+    id,
+    preset,
+    name,
+    command,
+    args,
+    env,
+    enabled,
+    customIconPath,
+    customTextColor,
+    shellId,
+  ];
 }

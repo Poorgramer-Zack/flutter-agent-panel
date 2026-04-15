@@ -69,7 +69,7 @@ class AppSettings extends Equatable {
       ),
       terminalThemeName:
           _migrateTerminalThemeName(json['terminalTheme'] as String?) ??
-              (json['terminalThemeName'] as String? ?? 'OneDark'),
+          (json['terminalThemeName'] as String? ?? 'OneDark'),
       customTerminalThemeJson: json['customTerminalThemeJson'] as String?,
       fontSettings: json['fontSettings'] != null
           ? TerminalFontSettings.fromJson(json['fontSettings'])
@@ -85,9 +85,10 @@ class AppSettings extends Equatable {
       agents: _mergeWithDefaults(json['agents'] as List?),
       appFontFamily: json['appFontFamily'] as String?,
       globalEnvironmentVariables:
-          (json['globalEnvironmentVariables'] as Map<String, dynamic>?)
-                  ?.map((k, v) => MapEntry(k, v as String)) ??
-              const {},
+          (json['globalEnvironmentVariables'] as Map<String, dynamic>?)?.map(
+            (k, v) => MapEntry(k, v as String),
+          ) ??
+          const {},
     );
   }
   final AppTheme appTheme;
@@ -135,8 +136,9 @@ class AppSettings extends Equatable {
       locale: locale ?? this.locale,
       terminalCursorBlink: terminalCursorBlink ?? this.terminalCursorBlink,
       agents: agents ?? this.agents,
-      appFontFamily:
-          clearAppFontFamily ? null : (appFontFamily ?? this.appFontFamily),
+      appFontFamily: clearAppFontFamily
+          ? null
+          : (appFontFamily ?? this.appFontFamily),
       globalEnvironmentVariables:
           globalEnvironmentVariables ?? this.globalEnvironmentVariables,
     );
@@ -245,17 +247,17 @@ class AppSettings extends Equatable {
 
   @override
   List<Object?> get props => [
-        appTheme,
-        terminalThemeName,
-        customTerminalThemeJson,
-        fontSettings,
-        defaultShell,
-        customShells,
-        selectedCustomShellId,
-        locale,
-        terminalCursorBlink,
-        agents,
-        appFontFamily,
-        globalEnvironmentVariables,
-      ];
+    appTheme,
+    terminalThemeName,
+    customTerminalThemeJson,
+    fontSettings,
+    defaultShell,
+    customShells,
+    selectedCustomShellId,
+    locale,
+    terminalCursorBlink,
+    agents,
+    appFontFamily,
+    globalEnvironmentVariables,
+  ];
 }

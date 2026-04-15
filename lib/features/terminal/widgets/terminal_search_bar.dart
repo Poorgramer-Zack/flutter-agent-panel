@@ -96,8 +96,8 @@ class _TerminalSearchBarState extends State<TerminalSearchBar> {
     final matchText = matchCount > 0
         ? '${currentIndex + 1}/$matchCount'
         : searchController.pattern.isNotEmpty
-            ? '0/0'
-            : '';
+        ? '0/0'
+        : '';
 
     return KeyboardListener(
       focusNode: FocusNode(),
@@ -106,9 +106,7 @@ class _TerminalSearchBarState extends State<TerminalSearchBar> {
         decoration: BoxDecoration(
           color: theme.colorScheme.background,
           borderRadius: BorderRadius.circular(4),
-          border: Border.all(
-            color: theme.colorScheme.border,
-          ),
+          border: Border.all(color: theme.colorScheme.border),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withValues(alpha: 0.2),
@@ -174,8 +172,9 @@ class _TerminalSearchBarState extends State<TerminalSearchBar> {
             _buildIconButton(
               icon: LucideIcons.chevronDown,
               tooltip: context.t.terminalSearchNext,
-              onPressed:
-                  matchCount > 0 ? () => searchController.nextMatch() : null,
+              onPressed: matchCount > 0
+                  ? () => searchController.nextMatch()
+                  : null,
             ),
 
             // Separator

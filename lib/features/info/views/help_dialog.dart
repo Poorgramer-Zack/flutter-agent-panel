@@ -47,8 +47,9 @@ class HelpDialog extends StatelessWidget {
               padding: EdgeInsets.zero,
               onPressed: () =>
                   _launchUrl('https://github.com/Aykahshi/flutter-agent-panel'),
-              child:
-                  const Text('https://github.com/Aykahshi/flutter-agent-panel'),
+              child: const Text(
+                'https://github.com/Aykahshi/flutter-agent-panel',
+              ),
             ),
             Gap(16.h),
             Text(

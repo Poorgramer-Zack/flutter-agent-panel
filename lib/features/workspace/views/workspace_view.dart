@@ -20,10 +20,7 @@ import '../widgets/thumbnail_bar.dart';
 /// Uses nested routing for terminal display.
 @RoutePage()
 class WorkspaceView extends StatefulWidget {
-  const WorkspaceView({
-    super.key,
-    @pathParam required this.workspaceId,
-  });
+  const WorkspaceView({super.key, @pathParam required this.workspaceId});
 
   final String workspaceId;
 
@@ -77,12 +74,12 @@ class _WorkspaceViewState extends State<WorkspaceView> {
 
     // Sync terminals with bloc
     context.read<TerminalBloc>().add(
-          SyncWorkspaceTerminals(
-            workspaceId: widget.workspaceId,
-            configs: workspace.terminals,
-            allTerminalIds: allTerminalIds,
-          ),
-        );
+      SyncWorkspaceTerminals(
+        workspaceId: widget.workspaceId,
+        configs: workspace.terminals,
+        allTerminalIds: allTerminalIds,
+      ),
+    );
 
     // Set initial active terminal and navigate
     if (_activeTerminalId == null ||
@@ -119,8 +116,9 @@ class _WorkspaceViewState extends State<WorkspaceView> {
     // Handle custom shell selection
     if (shellCmd != null && shellCmd.startsWith('custom:')) {
       final shellId = shellCmd.substring(7);
-      final customShell =
-          settings.customShells.where((s) => s.id == shellId).firstOrNull;
+      final customShell = settings.customShells
+          .where((s) => s.id == shellId)
+          .firstOrNull;
       if (customShell != null) {
         effectiveShellCmd = customShell.path;
         terminalTitle = customShell.name;
@@ -175,11 +173,8 @@ class _WorkspaceViewState extends State<WorkspaceView> {
     );
 
     context.read<WorkspaceBloc>().add(
-          AddTerminalToWorkspace(
-            workspaceId: workspaceId,
-            config: config,
-          ),
-        );
+      AddTerminalToWorkspace(workspaceId: workspaceId, config: config),
+    );
 
     // Auto select new terminal
     setState(() {
@@ -200,14 +195,12 @@ class _WorkspaceViewState extends State<WorkspaceView> {
     String terminalId,
   ) {
     context.read<WorkspaceBloc>().add(
-          RemoveTerminalFromWorkspace(
-            workspaceId: workspaceId,
-            terminalId: terminalId,
-          ),
-        );
-    context.read<TerminalBloc>().add(
-          DisposeTerminal(terminalId: terminalId),
-        );
+      RemoveTerminalFromWorkspace(
+        workspaceId: workspaceId,
+        terminalId: terminalId,
+      ),
+    );
+    context.read<TerminalBloc>().add(DisposeTerminal(terminalId: terminalId));
   }
 
   void _refreshTerminal(String terminalId) {
@@ -217,17 +210,18 @@ class _WorkspaceViewState extends State<WorkspaceView> {
         .firstOrNull;
     if (workspace == null) return;
 
-    final config =
-        workspace.terminals.where((t) => t.id == terminalId).firstOrNull;
+    final config = workspace.terminals
+        .where((t) => t.id == terminalId)
+        .firstOrNull;
     if (config == null) return;
 
     context.read<TerminalBloc>().add(
-          RestartTerminal(
-            terminalId: terminalId,
-            config: config,
-            workspaceId: widget.workspaceId,
-          ),
-        );
+      RestartTerminal(
+        terminalId: terminalId,
+        config: config,
+        workspaceId: widget.workspaceId,
+      ),
+    );
   }
 
   void _updateTitle(TerminalNode node, Workspace workspace) {
@@ -235,11 +229,11 @@ class _WorkspaceViewState extends State<WorkspaceView> {
     if (value.isNotEmpty && value != node.title) {
       final config = workspace.terminals.firstWhere((t) => t.id == node.id);
       context.read<WorkspaceBloc>().add(
-            UpdateTerminalInWorkspace(
-              workspaceId: workspace.id,
-              config: config.copyWith(title: value),
-            ),
-          );
+        UpdateTerminalInWorkspace(
+          workspaceId: workspace.id,
+          config: config.copyWith(title: value),
+        ),
+      );
     }
   }
 
@@ -306,8 +300,9 @@ class _WorkspaceViewState extends State<WorkspaceView> {
     }
 
     // Try to match custom shell by ID (UUID)
-    final customShell =
-        settings.customShells.where((s) => s.id == shellId).firstOrNull;
+    final customShell = settings.customShells
+        .where((s) => s.id == shellId)
+        .firstOrNull;
     if (customShell != null) {
       return customShell.path;
     }
@@ -317,13 +312,13 @@ class _WorkspaceViewState extends State<WorkspaceView> {
   }
 
   Color? _getAgentColor(AgentPreset preset) => switch (preset) {
-        AgentPreset.claude => const Color(0xFFD97757),
-        AgentPreset.qwen => const Color(0xFF615CED),
-        AgentPreset.codex => const Color(0xFF10A37F),
-        AgentPreset.gemini => const Color(0xFF4E87F6),
-        AgentPreset.opencode => Colors.blueGrey,
-        _ => null,
-      };
+    AgentPreset.claude => const Color(0xFFD97757),
+    AgentPreset.qwen => const Color(0xFF615CED),
+    AgentPreset.codex => const Color(0xFF10A37F),
+    AgentPreset.gemini => const Color(0xFF4E87F6),
+    AgentPreset.opencode => Colors.blueGrey,
+    _ => null,
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -371,19 +366,20 @@ class _WorkspaceViewState extends State<WorkspaceView> {
 
             final activeConfig = _activeTerminalId != null
                 ? workspace.terminals
-                    .where((t) => t.id == _activeTerminalId)
-                    .firstOrNull
+                      .where((t) => t.id == _activeTerminalId)
+                      .firstOrNull
                 : null;
 
             final agentConfig = activeConfig?.agentId != null
                 ? settings.agents
-                    .where((a) => a.id == activeConfig!.agentId)
-                    .firstOrNull
+                      .where((a) => a.id == activeConfig!.agentId)
+                      .firstOrNull
                 : null;
 
             // Agent Color Theme
-            final agentColor =
-                agentConfig != null ? _getAgentColor(agentConfig.preset) : null;
+            final agentColor = agentConfig != null
+                ? _getAgentColor(agentConfig.preset)
+                : null;
             final topBarColor = agentColor != null
                 ? agentColor.withValues(alpha: 0.1)
                 : theme.colorScheme.card;
@@ -425,8 +421,9 @@ class _WorkspaceViewState extends State<WorkspaceView> {
                           Icon(
                             LucideIcons.terminal,
                             size: 64,
-                            color: theme.colorScheme.mutedForeground
-                                .withValues(alpha: 0.5),
+                            color: theme.colorScheme.mutedForeground.withValues(
+                              alpha: 0.5,
+                            ),
                           ),
                           const Gap(16),
                           Text(
@@ -471,4 +468,5 @@ class _WorkspaceViewState extends State<WorkspaceView> {
     );
   }
 }
+
 // Removed entire _buildThumbnailBar and _buildThumbnailItem methods as they are extracted.
