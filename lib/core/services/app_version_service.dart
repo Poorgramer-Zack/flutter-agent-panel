@@ -88,13 +88,10 @@ class AppVersionService {
       });
       return currentVersion;
     } catch (e) {
-      AppLogger.instance.logger.e(
-        {
-          'logger': 'Update',
-          'message': 'Error fetching latest version',
-        },
-        error: e,
-      );
+      AppLogger.instance.logger.e({
+        'logger': 'Update',
+        'message': 'Error fetching latest version',
+      }, error: e);
       // Return current version on error
       return await getVersion();
     }
@@ -105,8 +102,10 @@ class AppVersionService {
     try {
       final currentVersion = await getVersion();
       final latestVersion = await getLatestVersion();
-      final updateAvailable =
-          _isVersionGreaterThan(latestVersion, currentVersion);
+      final updateAvailable = _isVersionGreaterThan(
+        latestVersion,
+        currentVersion,
+      );
 
       AppLogger.instance.logger.i({
         'logger': 'Update',
@@ -118,13 +117,10 @@ class AppVersionService {
 
       return updateAvailable;
     } catch (e) {
-      AppLogger.instance.logger.e(
-        {
-          'logger': 'Update',
-          'message': 'Error checking for updates',
-        },
-        error: e,
-      );
+      AppLogger.instance.logger.e({
+        'logger': 'Update',
+        'message': 'Error checking for updates',
+      }, error: e);
       return false;
     }
   }
@@ -146,13 +142,10 @@ class AppVersionService {
       // If lengths differ, the one with more parts is greater (e.g. 1.0.1 > 1.0)
       return v1Parts.length > v2Parts.length;
     } catch (e) {
-      AppLogger.instance.logger.e(
-        {
-          'logger': 'Update',
-          'message': 'Error comparing versions: $v1 vs $v2',
-        },
-        error: e,
-      );
+      AppLogger.instance.logger.e({
+        'logger': 'Update',
+        'message': 'Error comparing versions: $v1 vs $v2',
+      }, error: e);
       return false;
     }
   }
@@ -162,14 +155,17 @@ class AppVersionService {
     // If we have cached release info, try to find the best asset
     // Verify that the cached release tag matches the requested version
     final cachedTag = _latestReleaseJson?['tag_name'] as String?;
-    final cleanCachedTag =
-        cachedTag?.replaceFirst('Release v', '').replaceFirst('v', '').trim();
+    final cleanCachedTag = cachedTag
+        ?.replaceFirst('Release v', '')
+        .replaceFirst('v', '')
+        .trim();
 
     if (_latestReleaseJson != null && cleanCachedTag == version) {
       final assets = _latestReleaseJson!['assets'] as List<dynamic>?;
       if (assets != null) {
-        final assetUrls =
-            assets.map((a) => a['browser_download_url'] as String).toList();
+        final assetUrls = assets
+            .map((a) => a['browser_download_url'] as String)
+            .toList();
 
         switch (Platform.operatingSystem) {
           case 'windows':
@@ -178,12 +174,14 @@ class AppVersionService {
                 .firstOrNull;
             if (setupExe != null) return setupExe;
           case 'macos':
-            final dmg =
-                assetUrls.where((url) => url.endsWith('.dmg')).firstOrNull;
+            final dmg = assetUrls
+                .where((url) => url.endsWith('.dmg'))
+                .firstOrNull;
             if (dmg != null) return dmg;
           case 'linux':
-            final tarGz =
-                assetUrls.where((url) => url.endsWith('.tar.gz')).firstOrNull;
+            final tarGz = assetUrls
+                .where((url) => url.endsWith('.tar.gz'))
+                .firstOrNull;
             if (tarGz != null) return tarGz;
         }
       }

@@ -34,15 +34,13 @@ class MainTerminalContent extends StatelessWidget {
                 isRestarting
                     ? l10n.restartingTerminal
                     : (activeNode != null
-                        ? l10n.startingTerminal
-                        : l10n.noTerminalsOpen),
+                          ? l10n.startingTerminal
+                          : l10n.noTerminalsOpen),
                 style: theme.textTheme.large,
               ),
               if (isRestarting || activeNode != null) ...[
                 const Gap(16),
-                CircularProgressIndicator(
-                  color: theme.colorScheme.primary,
-                ),
+                CircularProgressIndicator(color: theme.colorScheme.primary),
               ],
             ],
           ),

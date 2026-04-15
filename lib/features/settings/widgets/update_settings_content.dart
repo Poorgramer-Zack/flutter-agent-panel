@@ -94,16 +94,11 @@ class _UpdateSettingsContentState extends State<UpdateSettingsContent> {
           child: Row(
             children: [
               Container(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 12.w,
-                  vertical: 8.h,
-                ),
+                padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
                 decoration: BoxDecoration(
                   color: theme.colorScheme.secondary,
                   borderRadius: BorderRadius.circular(6.r),
-                  border: Border.all(
-                    color: theme.colorScheme.border,
-                  ),
+                  border: Border.all(color: theme.colorScheme.border),
                 ),
                 child: _isLoading || _currentVersion == null
                     ? SizedBox(
@@ -125,19 +120,13 @@ class _UpdateSettingsContentState extends State<UpdateSettingsContent> {
               Gap(16.w),
               ShadButton.outline(
                 onPressed: _openReleasesPage,
-                leading: Icon(
-                  LucideIcons.externalLink,
-                  size: 14.sp,
-                ),
+                leading: Icon(LucideIcons.externalLink, size: 14.sp),
                 child: Text(l10n.latestVersion),
               ),
             ],
           ),
         ),
-        Divider(
-          height: 48.h,
-          color: theme.colorScheme.border,
-        ),
+        Divider(height: 48.h, color: theme.colorScheme.border),
 
         // Update Widget Section
         SettingsSection(
@@ -276,11 +265,7 @@ class _UpdateSettingsContentState extends State<UpdateSettingsContent> {
             ShadButton.outline(
               onPressed: onPressed,
               foregroundColor: isError ? theme.colorScheme.destructive : null,
-              leading: Icon(
-                icon,
-                size: 16.sp,
-                color: iconColor,
-              ),
+              leading: Icon(icon, size: 16.sp, color: iconColor),
               child: Text(label),
             ),
             if (isDownloading) ...[

@@ -1,11 +1,8 @@
 part of 'settings_bloc.dart';
 
 class SettingsState extends Equatable {
-  SettingsState({
-    AppSettings? settings,
-    this.isLoading = false,
-    this.error,
-  }) : settings = settings ?? AppSettings();
+  SettingsState({AppSettings? settings, this.isLoading = false, this.error})
+    : settings = settings ?? AppSettings();
   final AppSettings settings;
   final bool isLoading;
   final String? error;

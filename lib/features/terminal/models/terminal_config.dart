@@ -47,8 +47,9 @@ class TerminalConfig extends Equatable {
       agentId: json['agentId'] as String?,
       args:
           (json['args'] as List<dynamic>?)?.map((e) => e as String).toList() ??
-              const [],
-      env: (json['env'] as Map<String, dynamic>?)?.map(
+          const [],
+      env:
+          (json['env'] as Map<String, dynamic>?)?.map(
             (k, v) => MapEntry(k, v as String),
           ) ??
           const {},
@@ -104,6 +105,15 @@ class TerminalConfig extends Equatable {
   }
 
   @override
-  List<Object?> get props =>
-      [id, title, cwd, shellCmd, icon, agentId, args, env, agentCommand];
+  List<Object?> get props => [
+    id,
+    title,
+    cwd,
+    shellCmd,
+    icon,
+    agentId,
+    args,
+    env,
+    agentCommand,
+  ];
 }

@@ -70,8 +70,9 @@ class ShellSelectionPopover extends StatelessWidget {
           // Custom shells from settings
           if (settings.customShells.isNotEmpty) ...[
             Divider(height: 1, color: theme.colorScheme.border),
-            ...settings.customShells
-                .map((shell) => _buildCustomShellItem(context, theme, shell)),
+            ...settings.customShells.map(
+              (shell) => _buildCustomShellItem(context, theme, shell),
+            ),
           ],
         ],
       ),
@@ -87,21 +88,14 @@ class ShellSelectionPopover extends StatelessWidget {
     return InkWell(
       onTap: () {
         controller.hide();
-        onAddTerminal(
-          context,
-          workspaceId,
-          shellCmd: shell.command,
-        );
+        onAddTerminal(context, workspaceId, shellCmd: shell.command);
       },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Icon(
-              _getShellIcon(shell.icon),
-              size: 16,
-            ),
+            Icon(_getShellIcon(shell.icon), size: 16),
             const Gap(8),
             Text(_getShellTypeLocalizedName(shell, l10n)),
           ],
@@ -118,21 +112,14 @@ class ShellSelectionPopover extends StatelessWidget {
     return InkWell(
       onTap: () {
         controller.hide();
-        onAddTerminal(
-          context,
-          workspaceId,
-          shellCmd: 'custom:${shell.id}',
-        );
+        onAddTerminal(context, workspaceId, shellCmd: 'custom:${shell.id}');
       },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const Icon(
-              LucideIcons.terminal,
-              size: 16,
-            ),
+            const Icon(LucideIcons.terminal, size: 16),
             const Gap(8),
             Text(shell.name),
           ],
@@ -142,14 +129,14 @@ class ShellSelectionPopover extends StatelessWidget {
   }
 
   IconData _getShellIcon(String iconName) => switch (iconName) {
-        'terminal' => LucideIcons.terminal,
-        'command' => LucideIcons.squareTerminal,
-        'server' => LucideIcons.server,
-        'gitBranch' => LucideIcons.gitBranch,
-        'box' => LucideIcons.box,
-        'settings' => LucideIcons.settings,
-        _ => LucideIcons.terminal,
-      };
+    'terminal' => LucideIcons.terminal,
+    'command' => LucideIcons.squareTerminal,
+    'server' => LucideIcons.server,
+    'gitBranch' => LucideIcons.gitBranch,
+    'box' => LucideIcons.box,
+    'settings' => LucideIcons.settings,
+    _ => LucideIcons.terminal,
+  };
 
   String _getShellTypeLocalizedName(ShellType shell, AppLocalizations l10n) =>
       switch (shell) {

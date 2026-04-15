@@ -14,11 +14,7 @@ class CustomShellConfig extends Equatable {
     required String name,
     required String path,
   }) {
-    return CustomShellConfig(
-      id: const Uuid().v4(),
-      name: name,
-      path: path,
-    );
+    return CustomShellConfig(id: const Uuid().v4(), name: name, path: path);
   }
 
   factory CustomShellConfig.fromJson(Map<String, dynamic> json) {
@@ -32,10 +28,7 @@ class CustomShellConfig extends Equatable {
   final String name;
   final String path;
 
-  CustomShellConfig copyWith({
-    String? name,
-    String? path,
-  }) {
+  CustomShellConfig copyWith({String? name, String? path}) {
     return CustomShellConfig(
       id: id,
       name: name ?? this.name,
@@ -44,11 +37,7 @@ class CustomShellConfig extends Equatable {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'name': name,
-      'path': path,
-    };
+    return {'id': id, 'name': name, 'path': path};
   }
 
   @override

@@ -8,13 +8,13 @@ part 'settings_state.dart';
 
 class SettingsBloc extends HydratedBloc<SettingsEvent, SettingsState> {
   SettingsBloc()
-      : super(
-          SettingsState(
-            settings: AppSettings().copyWith(
-              agents: AppSettings.getDefaultAgents(),
-            ),
+    : super(
+        SettingsState(
+          settings: AppSettings().copyWith(
+            agents: AppSettings.getDefaultAgents(),
           ),
-        ) {
+        ),
+      ) {
     on<LoadSettings>((event, emit) {
       // HydratedBloc handles loading automatically,
       // but we can use this to trigger additional logic if needed.
@@ -104,9 +104,7 @@ class SettingsBloc extends HydratedBloc<SettingsEvent, SettingsState> {
 
   void _onUpdateLocale(UpdateLocale event, Emitter<SettingsState> emit) {
     emit(
-      state.copyWith(
-        settings: state.settings.copyWith(locale: event.locale),
-      ),
+      state.copyWith(settings: state.settings.copyWith(locale: event.locale)),
     );
   }
 
@@ -186,18 +184,14 @@ class SettingsBloc extends HydratedBloc<SettingsEvent, SettingsState> {
       return a.id == event.config.id ? event.config : a;
     }).toList();
     emit(
-      state.copyWith(
-        settings: state.settings.copyWith(agents: updatedAgents),
-      ),
+      state.copyWith(settings: state.settings.copyWith(agents: updatedAgents)),
     );
   }
 
   void _onAddAgentConfig(AddAgentConfig event, Emitter<SettingsState> emit) {
     final updatedAgents = [...state.settings.agents, event.config];
     emit(
-      state.copyWith(
-        settings: state.settings.copyWith(agents: updatedAgents),
-      ),
+      state.copyWith(settings: state.settings.copyWith(agents: updatedAgents)),
     );
   }
 
@@ -205,12 +199,11 @@ class SettingsBloc extends HydratedBloc<SettingsEvent, SettingsState> {
     RemoveAgentConfig event,
     Emitter<SettingsState> emit,
   ) {
-    final updatedAgents =
-        state.settings.agents.where((a) => a.id != event.agentId).toList();
+    final updatedAgents = state.settings.agents
+        .where((a) => a.id != event.agentId)
+        .toList();
     emit(
-      state.copyWith(
-        settings: state.settings.copyWith(agents: updatedAgents),
-      ),
+      state.copyWith(settings: state.settings.copyWith(agents: updatedAgents)),
     );
   }
 
@@ -220,8 +213,9 @@ class SettingsBloc extends HydratedBloc<SettingsEvent, SettingsState> {
   ) {
     emit(
       state.copyWith(
-        settings:
-            state.settings.copyWith(globalEnvironmentVariables: event.envVars),
+        settings: state.settings.copyWith(
+          globalEnvironmentVariables: event.envVars,
+        ),
       ),
     );
   }
@@ -238,8 +232,6 @@ class SettingsBloc extends HydratedBloc<SettingsEvent, SettingsState> {
 
   @override
   Map<String, dynamic>? toJson(SettingsState state) {
-    return {
-      'settings': state.settings.toJson(),
-    };
+    return {'settings': state.settings.toJson()};
   }
 }

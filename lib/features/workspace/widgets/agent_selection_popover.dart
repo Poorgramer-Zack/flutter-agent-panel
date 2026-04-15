@@ -59,8 +59,9 @@ class AgentSelectionPopover extends StatelessWidget {
             ),
           ),
           Divider(height: 1, color: theme.colorScheme.border),
-          ...enabledAgents
-              .map((agent) => _buildAgentItem(context, theme, agent)),
+          ...enabledAgents.map(
+            (agent) => _buildAgentItem(context, theme, agent),
+          ),
         ],
       ),
     );
@@ -74,11 +75,7 @@ class AgentSelectionPopover extends StatelessWidget {
     return InkWell(
       onTap: () {
         controller.toggle();
-        onAddTerminal(
-          context,
-          workspaceId,
-          agentId: agent.id,
-        );
+        onAddTerminal(context, workspaceId, agentId: agent.id);
       },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
@@ -114,10 +111,7 @@ class AgentSelectionPopover extends StatelessWidget {
                         );
                       },
                     )
-                  : const Icon(
-                      LucideIcons.bot,
-                      size: 16,
-                    ),
+                  : const Icon(LucideIcons.bot, size: 16),
             ),
             const Gap(8),
             Text(agent.name),

@@ -40,11 +40,7 @@ class AppAboutDialog extends StatelessWidget {
             Gap(16.h),
             ClipRRect(
               borderRadius: BorderRadius.circular(16.r),
-              child: Image.asset(
-                Assets.appIcon,
-                width: 120.r,
-                height: 120.r,
-              ),
+              child: Image.asset(Assets.appIcon, width: 120.r, height: 120.r),
             ),
             Gap(12.h),
             FutureBuilder<String>(
@@ -62,8 +58,9 @@ class AppAboutDialog extends StatelessWidget {
             Gap(16.h),
             Text(
               'Author: Aykahshi',
-              style:
-                  theme.textTheme.large.copyWith(fontWeight: FontWeight.bold),
+              style: theme.textTheme.large.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
             ),
             Gap(8.h),
             ShadButton.link(

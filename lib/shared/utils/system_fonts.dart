@@ -298,8 +298,10 @@ class SystemFonts {
       _loadedFonts.add(familyName);
 
       if (!_fontFamilyMap.containsKey(familyName)) {
-        _fontFamilyMap[familyName] =
-            FontFamilyInfo(name: familyName, paths: [path]);
+        _fontFamilyMap[familyName] = FontFamilyInfo(
+          name: familyName,
+          paths: [path],
+        );
       }
       return familyName;
     } catch (_) {

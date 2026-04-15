@@ -17,31 +17,31 @@ class AppRouter extends RootStackRouter {
 
   @override
   List<AutoRoute> get routes => [
+    AutoRoute(
+      page: AppShellRoute.page,
+      path: '/',
+      initial: true,
+      children: [
         AutoRoute(
-          page: AppShellRoute.page,
-          path: '/',
+          page: WorkspaceWrapperRoute.page,
+          path: 'workspace',
           initial: true,
           children: [
             AutoRoute(
-              page: WorkspaceWrapperRoute.page,
-              path: 'workspace',
-              initial: true,
+              page: WorkspaceRoute.page,
+              path: ':workspaceId',
               children: [
                 AutoRoute(
-                  page: WorkspaceRoute.page,
-                  path: ':workspaceId',
-                  children: [
-                    AutoRoute(
-                      page: TerminalRoute.page,
-                      path: 'terminal/:terminalId',
-                    ),
-                  ],
+                  page: TerminalRoute.page,
+                  path: 'terminal/:terminalId',
                 ),
               ],
             ),
           ],
         ),
-      ];
+      ],
+    ),
+  ];
 
   @override
   List<AutoRouteGuard> get guards => [];

@@ -42,11 +42,7 @@ class TerminalBloc extends Bloc<TerminalEvent, TerminalState> {
     }
 
     // Mark as pending
-    emit(
-      state.copyWith(
-        pendingIds: {...state.pendingIds, config.id},
-      ),
-    );
+    emit(state.copyWith(pendingIds: {...state.pendingIds, config.id}));
 
     try {
       final node = await _createTerminalNode(config, workspaceId);
@@ -73,10 +69,7 @@ class TerminalBloc extends Bloc<TerminalEvent, TerminalState> {
     }
   }
 
-  void _onDisposeTerminal(
-    DisposeTerminal event,
-    Emitter<TerminalState> emit,
-  ) {
+  void _onDisposeTerminal(DisposeTerminal event, Emitter<TerminalState> emit) {
     final node = state.terminals[event.terminalId];
     if (node != null) {
       node.dispose();
@@ -92,9 +85,7 @@ class TerminalBloc extends Bloc<TerminalEvent, TerminalState> {
   ) async {
     // Mark as restarting
     emit(
-      state.copyWith(
-        restartingIds: {...state.restartingIds, event.terminalId},
-      ),
+      state.copyWith(restartingIds: {...state.restartingIds, event.terminalId}),
     );
 
     // Dispose old node
@@ -127,8 +118,9 @@ class TerminalBloc extends Bloc<TerminalEvent, TerminalState> {
       );
       emit(
         state.copyWith(
-          restartingIds:
-              state.restartingIds.where((id) => id != event.terminalId).toSet(),
+          restartingIds: state.restartingIds
+              .where((id) => id != event.terminalId)
+              .toSet(),
         ),
       );
     }
@@ -217,8 +209,9 @@ class TerminalBloc extends Bloc<TerminalEvent, TerminalState> {
     if (state.restartingIds.contains(event.terminalId)) {
       emit(
         state.copyWith(
-          restartingIds:
-              state.restartingIds.where((id) => id != event.terminalId).toSet(),
+          restartingIds: state.restartingIds
+              .where((id) => id != event.terminalId)
+              .toSet(),
         ),
       );
     }
@@ -231,10 +224,12 @@ class TerminalBloc extends Bloc<TerminalEvent, TerminalState> {
     // Stop loading/restarting state
     emit(
       state.copyWith(
-        pendingIds:
-            state.pendingIds.where((id) => id != event.terminalId).toSet(),
-        restartingIds:
-            state.restartingIds.where((id) => id != event.terminalId).toSet(),
+        pendingIds: state.pendingIds
+            .where((id) => id != event.terminalId)
+            .toSet(),
+        restartingIds: state.restartingIds
+            .where((id) => id != event.terminalId)
+            .toSet(),
         errorMessage: '${event.message} (Terminal: ${event.terminalId})',
       ),
     );
@@ -305,12 +300,7 @@ class TerminalBloc extends Bloc<TerminalEvent, TerminalState> {
 
       if (shellLower.contains('pwsh') || shellLower.contains('powershell')) {
         // PowerShell: use & { ... } to handle spaces and complex commands
-        ptyArgs = [
-          '-NoLogo',
-          '-NoExit',
-          '-Command',
-          '& { $agentWithArgs }',
-        ];
+        ptyArgs = ['-NoLogo', '-NoExit', '-Command', '& { $agentWithArgs }'];
       } else if (shellLower.contains('cmd')) {
         // Command Prompt: /K allows executing command and staying open
         // Wrapping everything in quotes if there are spaces or special chars
@@ -396,24 +386,24 @@ class TerminalBloc extends Bloc<TerminalEvent, TerminalState> {
         .cast<List<int>>()
         .transform(const Utf8Decoder(allowMalformed: true))
         .listen(
-      (data) {
-        terminal.write(data);
-        if (data.isNotEmpty) {
-          if (!node.hasOutput) {
-            add(TerminalOutputReceived(terminalId: config.id));
-          }
-          node.markActivity();
-        }
-      },
-      onError: (Object error) {
-        add(
-          TerminalErrorOccurred(
-            terminalId: config.id,
-            message: error.toString(),
-          ),
+          (data) {
+            terminal.write(data);
+            if (data.isNotEmpty) {
+              if (!node.hasOutput) {
+                add(TerminalOutputReceived(terminalId: config.id));
+              }
+              node.markActivity();
+            }
+          },
+          onError: (Object error) {
+            add(
+              TerminalErrorOccurred(
+                terminalId: config.id,
+                message: error.toString(),
+              ),
+            );
+          },
         );
-      },
-    );
 
     // Setup Terminal -> PTY (Input)
     terminal.onOutput = (data) {

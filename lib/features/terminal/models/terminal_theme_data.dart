@@ -44,17 +44,20 @@ class TerminalThemeData extends Equatable {
       brightBlack: _parseHexColor(json['brightBlack'] as String? ?? '#808080'),
       brightRed: _parseHexColor(json['brightRed'] as String? ?? '#FF0000'),
       brightGreen: _parseHexColor(json['brightGreen'] as String? ?? '#00FF00'),
-      brightYellow:
-          _parseHexColor(json['brightYellow'] as String? ?? '#FFFF00'),
+      brightYellow: _parseHexColor(
+        json['brightYellow'] as String? ?? '#FFFF00',
+      ),
       brightBlue: _parseHexColor(json['brightBlue'] as String? ?? '#0000FF'),
-      brightPurple:
-          _parseHexColor(json['brightPurple'] as String? ?? '#FF00FF'),
+      brightPurple: _parseHexColor(
+        json['brightPurple'] as String? ?? '#FF00FF',
+      ),
       brightCyan: _parseHexColor(json['brightCyan'] as String? ?? '#00FFFF'),
       brightWhite: _parseHexColor(json['brightWhite'] as String? ?? '#FFFFFF'),
       background: _parseHexColor(json['background'] as String? ?? '#000000'),
       foreground: _parseHexColor(json['foreground'] as String? ?? '#FFFFFF'),
-      selectionBackground:
-          _parseHexColor(json['selectionBackground'] as String? ?? '#3A3D41'),
+      selectionBackground: _parseHexColor(
+        json['selectionBackground'] as String? ?? '#3A3D41',
+      ),
       cursorColor: _parseHexColor(json['cursorColor'] as String? ?? '#FFFFFF'),
     );
   }
@@ -149,26 +152,26 @@ class TerminalThemeData extends Equatable {
 
   @override
   List<Object?> get props => [
-        name,
-        black,
-        red,
-        green,
-        yellow,
-        blue,
-        purple,
-        cyan,
-        white,
-        brightBlack,
-        brightRed,
-        brightGreen,
-        brightYellow,
-        brightBlue,
-        brightPurple,
-        brightCyan,
-        brightWhite,
-        background,
-        foreground,
-        selectionBackground,
-        cursorColor,
-      ];
+    name,
+    black,
+    red,
+    green,
+    yellow,
+    blue,
+    purple,
+    cyan,
+    white,
+    brightBlack,
+    brightRed,
+    brightGreen,
+    brightYellow,
+    brightBlue,
+    brightPurple,
+    brightCyan,
+    brightWhite,
+    background,
+    foreground,
+    selectionBackground,
+    cursorColor,
+  ];
 }

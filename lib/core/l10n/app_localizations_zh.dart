@@ -414,7 +414,9 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String updateAvailableDescription(
-      String latestVersion, String currentVersion) {
+    String latestVersion,
+    String currentVersion,
+  ) {
     return '新版本 $latestVersion 可用。\n當前版本：$currentVersion';
   }
 }
@@ -829,7 +831,9 @@ class AppLocalizationsZhCn extends AppLocalizationsZh {
 
   @override
   String updateAvailableDescription(
-      String latestVersion, String currentVersion) {
+    String latestVersion,
+    String currentVersion,
+  ) {
     return '新版本 $latestVersion 可用。\n当前版本：$currentVersion';
   }
 }

@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "dart": {
+      "type": "local",
+      "command": "dart",
+      "args": ["mcp-server"]
+    }
+  }
+}

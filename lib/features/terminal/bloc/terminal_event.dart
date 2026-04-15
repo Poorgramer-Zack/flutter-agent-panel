@@ -9,10 +9,7 @@ abstract class TerminalEvent extends Equatable {
 
 /// Request to create a new terminal for a workspace
 class CreateTerminal extends TerminalEvent {
-  const CreateTerminal({
-    required this.config,
-    required this.workspaceId,
-  });
+  const CreateTerminal({required this.config, required this.workspaceId});
 
   final TerminalConfig config;
   final String workspaceId;

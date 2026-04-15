@@ -12,10 +12,7 @@ import 'settings_section.dart';
 
 /// General settings content widget for language selection and global env vars.
 class GeneralSettingsContent extends StatefulWidget {
-  const GeneralSettingsContent({
-    super.key,
-    required this.settings,
-  });
+  const GeneralSettingsContent({super.key, required this.settings});
 
   final AppSettings settings;
 

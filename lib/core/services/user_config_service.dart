@@ -17,7 +17,8 @@ class UserConfigService {
   String get configPath {
     if (_configPath != null) return _configPath!;
 
-    final home = Platform.environment['USERPROFILE'] ?? // Windows
+    final home =
+        Platform.environment['USERPROFILE'] ?? // Windows
         Platform.environment['HOME']; // macOS/Linux
 
     if (home == null) {
@@ -202,8 +203,8 @@ class UserConfigService {
 
     try {
       final files = directory.listSync().whereType<File>().where(
-            (f) => f.path.endsWith('.json'),
-          );
+        (f) => f.path.endsWith('.json'),
+      );
 
       for (final file in files) {
         try {

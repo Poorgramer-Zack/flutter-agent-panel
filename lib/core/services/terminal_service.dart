@@ -31,8 +31,11 @@ class TerminalServiceImpl implements TerminalService {
             shell = 'powershell.exe';
             final fallbackResult = Process.runSync('where', [shell]);
             if (fallbackResult.exitCode == 0) {
-              shell =
-                  fallbackResult.stdout.toString().split('\r\n').first.trim();
+              shell = fallbackResult.stdout
+                  .toString()
+                  .split('\r\n')
+                  .first
+                  .trim();
             }
           }
         } catch (_) {

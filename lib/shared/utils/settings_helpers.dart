@@ -25,20 +25,20 @@ String getShellTypeLocalizedName(ShellType shell, AppLocalizations l10n) =>
 
 /// Get icon for shell type
 IconData getShellIcon(String iconName) => switch (iconName) {
-      'terminal' => LucideIcons.terminal,
-      'command' => LucideIcons.squareTerminal,
-      'server' => LucideIcons.server,
-      'gitBranch' => LucideIcons.gitBranch,
-      'settings' => LucideIcons.settings,
-      _ => LucideIcons.terminal,
-    };
+  'terminal' => LucideIcons.terminal,
+  'command' => LucideIcons.squareTerminal,
+  'server' => LucideIcons.server,
+  'gitBranch' => LucideIcons.gitBranch,
+  'settings' => LucideIcons.settings,
+  _ => LucideIcons.terminal,
+};
 
 /// Get color for agent preset
 Color? getAgentColor(AgentPreset preset) => switch (preset) {
-      AgentPreset.claude => const Color(0xFFD97757),
-      AgentPreset.qwen => const Color(0xFF615CED),
-      AgentPreset.codex => const Color(0xFF10A37F),
-      AgentPreset.gemini => const Color(0xFF4E87F6),
-      AgentPreset.opencode => Colors.blueGrey,
-      _ => null,
-    };
+  AgentPreset.claude => const Color(0xFFD97757),
+  AgentPreset.qwen => const Color(0xFF615CED),
+  AgentPreset.codex => const Color(0xFF10A37F),
+  AgentPreset.gemini => const Color(0xFF4E87F6),
+  AgentPreset.opencode => Colors.blueGrey,
+  _ => null,
+};

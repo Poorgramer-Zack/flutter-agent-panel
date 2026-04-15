@@ -81,9 +81,8 @@ class App extends StatelessWidget {
                     ],
                     locale: _parseLocale(state.settings.locale),
                     routerConfig: _appRouter.config(),
-                    builder: (context, child) => ShadAppBuilder(
-                      child: child ?? const SizedBox.shrink(),
-                    ),
+                    builder: (context, child) =>
+                        ShadAppBuilder(child: child ?? const SizedBox.shrink()),
                   );
                 },
               );
@@ -103,9 +102,9 @@ class App extends StatelessWidget {
   }
 
   ShadColorScheme _getColorScheme(AppTheme theme) => switch (theme) {
-        AppTheme.dark => const ShadZincColorScheme.dark(),
-        AppTheme.light => const ShadZincColorScheme.light(),
-      };
+    AppTheme.dark => const ShadZincColorScheme.dark(),
+    AppTheme.light => const ShadZincColorScheme.light(),
+  };
 
   ShadTextTheme _getTextTheme(String? fontFamily) {
     final baseTheme = fontFamily == null

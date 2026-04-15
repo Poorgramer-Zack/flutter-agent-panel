@@ -2,11 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/terminal_node.dart';
 
 class ActivityIndicator extends StatefulWidget {
-  const ActivityIndicator({
-    super.key,
-    required this.status,
-    this.size = 8.0,
-  });
+  const ActivityIndicator({super.key, required this.status, this.size = 8.0});
   final TerminalStatus status;
   final double size;
 
@@ -27,9 +23,10 @@ class _ActivityIndicatorState extends State<ActivityIndicator>
       duration: const Duration(milliseconds: 1500),
     );
 
-    _glowAnimation = Tween<double>(begin: 0.2, end: 1.0).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
-    );
+    _glowAnimation = Tween<double>(
+      begin: 0.2,
+      end: 1.0,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
 
     if (widget.status == TerminalStatus.running) {
       _controller.repeat(reverse: true);
@@ -92,10 +89,10 @@ class _ActivityIndicatorState extends State<ActivityIndicator>
   }
 
   Color _getStatusColor(TerminalStatus status) => switch (status) {
-        TerminalStatus.running => Colors.orangeAccent,
-        TerminalStatus.idle => Colors.greenAccent,
-        TerminalStatus.error => Colors.redAccent,
-        TerminalStatus.disconnected => Colors.grey.shade600,
-        TerminalStatus.restarting => Colors.blueAccent,
-      };
+    TerminalStatus.running => Colors.orangeAccent,
+    TerminalStatus.idle => Colors.greenAccent,
+    TerminalStatus.error => Colors.redAccent,
+    TerminalStatus.disconnected => Colors.grey.shade600,
+    TerminalStatus.restarting => Colors.blueAccent,
+  };
 }

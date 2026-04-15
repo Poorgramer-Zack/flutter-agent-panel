@@ -17,12 +17,15 @@ void showAddEditAgentDialog(
   bool isCustom = false,
 }) {
   final nameController = TextEditingController(text: existingAgent?.name ?? '');
-  final commandController =
-      TextEditingController(text: existingAgent?.command ?? '');
-  final argsController =
-      TextEditingController(text: existingAgent?.args.join(' ') ?? '');
+  final commandController = TextEditingController(
+    text: existingAgent?.command ?? '',
+  );
+  final argsController = TextEditingController(
+    text: existingAgent?.args.join(' ') ?? '',
+  );
   final envController = TextEditingController(
-    text: existingAgent?.env.entries
+    text:
+        existingAgent?.env.entries
             .map((e) => '${e.key}=${e.value}')
             .join('\n') ??
         '',
@@ -75,8 +78,9 @@ void showAddEditAgentDialog(
                       )
                       .toList(),
                   selectedOptionBuilder: (context, value) {
-                    final selected =
-                        shellOptions.where((o) => o.id == value).firstOrNull;
+                    final selected = shellOptions
+                        .where((o) => o.id == value)
+                        .firstOrNull;
                     return Text(selected?.name ?? l10n.defaultShellOption);
                   },
                   onChanged: (value) {
@@ -115,16 +119,18 @@ void showAddEditAgentDialog(
                         for (final line in envLines) {
                           final parts = line.split('=');
                           if (parts.length >= 2) {
-                            env[parts[0].trim()] =
-                                parts.sublist(1).join('=').trim();
+                            env[parts[0].trim()] = parts
+                                .sublist(1)
+                                .join('=')
+                                .trim();
                           }
                         }
 
                         if (isCustom) {
                           final newAgent = AgentConfig(
-                            id: existingAgent?.id ??
-                                DateTime.now()
-                                    .millisecondsSinceEpoch
+                            id:
+                                existingAgent?.id ??
+                                DateTime.now().millisecondsSinceEpoch
                                     .toString(),
                             preset: AgentPreset.custom,
                             name: nameController.text,
@@ -135,13 +141,13 @@ void showAddEditAgentDialog(
                             shellId: selectedShellId,
                           );
                           if (existingAgent != null) {
-                            context
-                                .read<SettingsBloc>()
-                                .add(UpdateAgentConfig(newAgent));
+                            context.read<SettingsBloc>().add(
+                              UpdateAgentConfig(newAgent),
+                            );
                           } else {
-                            context
-                                .read<SettingsBloc>()
-                                .add(AddAgentConfig(newAgent));
+                            context.read<SettingsBloc>().add(
+                              AddAgentConfig(newAgent),
+                            );
                           }
                         } else {
                           final updated = existingAgent!.copyWith(
@@ -150,9 +156,9 @@ void showAddEditAgentDialog(
                             shellId: selectedShellId,
                             clearShellId: selectedShellId == null,
                           );
-                          context
-                              .read<SettingsBloc>()
-                              .add(UpdateAgentConfig(updated));
+                          context.read<SettingsBloc>().add(
+                            UpdateAgentConfig(updated),
+                          );
                         }
                         Navigator.of(ctx).pop();
                       },

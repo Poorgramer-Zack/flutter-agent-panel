@@ -52,14 +52,10 @@ class TerminalTopBar extends StatelessWidget {
       decoration: BoxDecoration(
         color: topBarColor,
         border: Border(
-          bottom: BorderSide(
-            color: topBarBorderColor.withValues(alpha: 0.3),
-          ),
+          bottom: BorderSide(color: topBarBorderColor.withValues(alpha: 0.3)),
         ),
       ),
-      padding: const EdgeInsets.symmetric(
-        horizontal: 10,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Row(
         children: [
           if (activeNode != null)
@@ -77,10 +73,7 @@ class TerminalTopBar extends StatelessWidget {
                     _buildTitleInput(theme),
                   ],
                   const Gap(24),
-                  ActivityIndicator(
-                    status: activeNode!.status,
-                    size: 8,
-                  ),
+                  ActivityIndicator(status: activeNode!.status, size: 8),
                   const Gap(16),
                   _buildRefreshButton(theme),
                   _buildCloseButton(theme),
@@ -96,9 +89,7 @@ class TerminalTopBar extends StatelessWidget {
     return Container(
       width: 32,
       height: 32,
-      padding: const EdgeInsets.all(
-        4,
-      ),
+      padding: const EdgeInsets.all(4),
       child: agentConfig!.preset.iconAssetPath != null
           ? Builder(
               builder: (context) {
@@ -118,10 +109,7 @@ class TerminalTopBar extends StatelessWidget {
                   );
                 }
 
-                return SvgPicture.asset(
-                  iconPath,
-                  colorFilter: colorFilter,
-                );
+                return SvgPicture.asset(iconPath, colorFilter: colorFilter);
               },
             )
           : Icon(
@@ -149,9 +137,7 @@ class TerminalTopBar extends StatelessWidget {
       popover: (context) => Container(
         width: 300,
         height: 300,
-        padding: const EdgeInsets.all(
-          8,
-        ),
+        padding: const EdgeInsets.all(8),
         child: GridView.count(
           crossAxisCount: 5,
           children: [
@@ -173,10 +159,7 @@ class TerminalTopBar extends StatelessWidget {
         height: 32,
         onPressed: () => iconPopoverController.toggle(),
         child: Icon(
-          getIconData(
-            activeNode!.id,
-            workspace,
-          ),
+          getIconData(activeNode!.id, workspace),
           size: 18,
           color: theme.colorScheme.primary,
         ),
@@ -204,10 +187,7 @@ class TerminalTopBar extends StatelessWidget {
             secondaryBorder: ShadBorder.none,
             secondaryFocusedBorder: ShadBorder.none,
           ),
-          onSubmitted: (value) => onUpdateTitle(
-            activeNode!,
-            workspace,
-          ),
+          onSubmitted: (value) => onUpdateTitle(activeNode!, workspace),
         ),
       ),
     );

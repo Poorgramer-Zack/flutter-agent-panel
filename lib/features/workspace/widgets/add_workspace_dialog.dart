@@ -109,7 +109,7 @@ class _AddWorkspaceDialogState extends State<AddWorkspaceDialog> {
   }
 
   Future<void> _pickDirectory() async {
-    final path = await FilePicker.platform.getDirectoryPath();
+    final path = await FilePicker.getDirectoryPath();
     if (path != null) {
       _pathController.text = path;
       // Auto-fill name if empty
@@ -141,22 +141,17 @@ class _AddWorkspaceDialogState extends State<AddWorkspaceDialog> {
 
     if (widget.isEditMode) {
       context.read<WorkspaceBloc>().add(
-            UpdateWorkspace(
-              id: widget.workspaceId!,
-              name: name,
-              icon: _selectedIcon,
-              tags: tags,
-            ),
-          );
+        UpdateWorkspace(
+          id: widget.workspaceId!,
+          name: name,
+          icon: _selectedIcon,
+          tags: tags,
+        ),
+      );
     } else {
       context.read<WorkspaceBloc>().add(
-            AddWorkspace(
-              path: path,
-              name: name,
-              icon: _selectedIcon,
-              tags: tags,
-            ),
-          );
+        AddWorkspace(path: path, name: name, icon: _selectedIcon, tags: tags),
+      );
     }
 
     Navigator.of(context).pop();
@@ -168,8 +163,9 @@ class _AddWorkspaceDialogState extends State<AddWorkspaceDialog> {
     final l10n = context.t;
 
     return ShadDialog(
-      title:
-          Text(widget.isEditMode ? l10n.editWorkspace : l10n.createWorkspace),
+      title: Text(
+        widget.isEditMode ? l10n.editWorkspace : l10n.createWorkspace,
+      ),
       description: const SizedBox.shrink(),
       child: SizedBox(
         width: 400,
@@ -285,10 +281,7 @@ class _AddWorkspaceDialogState extends State<AddWorkspaceDialog> {
                   onPressed: () => Navigator.of(context).pop(),
                 ),
                 const Gap(8),
-                ShadButton(
-                  onPressed: _submit,
-                  child: Text(l10n.save),
-                ),
+                ShadButton(onPressed: _submit, child: Text(l10n.save)),
               ],
             ),
           ],

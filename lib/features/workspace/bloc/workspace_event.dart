@@ -92,12 +92,7 @@ class ReorderTerminalsInWorkspace extends WorkspaceEvent {
 }
 
 class UpdateWorkspace extends WorkspaceEvent {
-  const UpdateWorkspace({
-    required this.id,
-    this.name,
-    this.icon,
-    this.tags,
-  });
+  const UpdateWorkspace({required this.id, this.name, this.icon, this.tags});
   final String id;
   final String? name;
   final String? icon;
@@ -116,10 +111,7 @@ class TogglePinWorkspace extends WorkspaceEvent {
 }
 
 class ReorderWorkspaces extends WorkspaceEvent {
-  const ReorderWorkspaces({
-    required this.oldIndex,
-    required this.newIndex,
-  });
+  const ReorderWorkspaces({required this.oldIndex, required this.newIndex});
   final int oldIndex;
   final int newIndex;
 
