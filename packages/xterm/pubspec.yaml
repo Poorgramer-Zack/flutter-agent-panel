@@ -5,13 +5,13 @@ homepage: https://github.com/TerminalStudio/xterm.dart
 resolution: workspace
 
 environment:
-  sdk: ^3.6.0
+  sdk: ^3.11.0
 
 dependencies:
-  convert: ^3.1.1
-  meta: ^1.15.0
-  quiver: ^3.2.1
-  equatable: ^2.0.5
+  convert: ^3.1.2
+  meta: ^1.17.0
+  quiver: ^3.2.2
+  equatable: ^2.0.8
   flutter:
     sdk: flutter
   zmodem: ^0.0.6
@@ -19,10 +19,10 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  test: ^1.25.12
-  flutter_lints: ^5.0.0
-  mockito: ^5.4.5
-  build_runner: ^2.4.0
+  test: ^1.30.0
+  flutter_lints: ^6.0.0
+  mockito: ^5.6.4
+  build_runner: ^2.13.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
