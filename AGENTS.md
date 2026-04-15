@@ -1,8 +1,8 @@
 # FLUTTER AGENT PANEL - PROJECT KNOWLEDGE BASE
 
 **Generated:** 2026-01-08
-**Commit:** b8ef0c5
-**Branch:** main
+**Updated:** 2026-04-15
+**Flutter:** 3.41.4 (via FVM)
 
 ## OVERVIEW
 Cross-platform desktop terminal aggregator with AI agent integration. Built with Flutter + shadcn_ui, using BLoC/HydratedBloc for state persistence.
@@ -17,7 +17,7 @@ flutter_agent_panel/
 │   ├── features/              # Feature modules (BLoC pattern)
 │   │   ├── home/              # App shell layout
 │   │   ├── info/              # About/Help dialogs
-│   │   ├── settings/          # App configuration (879-line dialog)
+│   │   ├── settings/          # App configuration (851 lines)
 │   │   ├── terminal/          # PTY management, themes
 │   │   └── workspace/         # Multi-workspace organization
 │   └── shared/                # Utils, constants, common widgets
@@ -73,26 +73,45 @@ flutter_agent_panel/
 | Blocking PTY calls on main isolate | Use dedicated isolates |
 
 ## COMMANDS
-```bash
-# Development
-flutter pub get
-dart run lean_builder build      # Generate routes
-flutter gen-l10n                 # Generate localizations
-flutter run -d windows           # Run on Windows
 
-# Packages (run from package dir)
-flutter pub run ffigen --config ffigen.yaml  # Regenerate PTY bindings
+```bash
+# Setup
+flutter pub get
+dart run lean_builder build      # Generate routes (must run after any route/l10n change)
+flutter gen-l10n                  # Generate l10n (rarely needed separately)
+
+# Development
+flutter run -d windows
 
 # Build
-flutter build windows
-flutter build macos
-flutter build linux
+flutter build windows --release
+flutter build macos --release
+flutter build linux --release
+
+# Packages (run from package dir for ffigen)
+flutter pub run ffigen --config ffigen.yaml  # Regenerate PTY bindings
 ```
+
+## DEV PIPELINE
+
+`lean_builder build` → `dart format --set-exit-if-changed .` → `flutter analyze`
+
+CI uses `--no-fatal-infos` for analyze, but strict locally.
 
 ## NOTES
 
 ### Desktop-Only
 No Android/iOS directories - configured for Windows, macOS, Linux only.
+
+### FVM (Flutter Version Management)
+This project uses FVM. The Flutter version is pinned in `.fvmrc` (3.41.4). CI workflows use `kuhnroyal/flutter-fvm-config-action` to auto-detect and use the correct version.
+
+### Generated Files (Excluded from Analysis)
+`analysis_options.yaml` excludes:
+- `packages/flutter_pty/**`
+- `packages/xterm/**`
+- `lib/core/l10n/**.dart`
+- `lib/core/router/**.gr.dart`
 
 ### Monorepo Structure
 Uses Flutter workspace with local packages:
@@ -100,9 +119,9 @@ Uses Flutter workspace with local packages:
 - `packages/flutter_pty` - native PTY bindings
 
 ### Large File Hotspots
-- `settings_dialog.dart` (879 lines) - Tab-based settings UI
+- `settings_dialog.dart` (851 lines) - Tab-based settings UI
 - `workspace_drawer.dart` (541 lines) - Drag-drop with pin constraints
-- `terminal_bloc.dart` (434 lines) - Cross-platform shell handling
+- `terminal_bloc.dart` (430 lines) - Cross-platform shell handling
 
 ### Platform-Specific Shell Logic
 Terminal creation handles: PowerShell, pwsh, cmd, WSL, bash, zsh. See `TerminalServiceImpl` and `TerminalBloc._createTerminalNode()`.

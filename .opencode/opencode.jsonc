@@ -3,7 +3,79 @@
   "mcp": {
     "dart": {
       "type": "local",
-      "command": ["dart", "mcp-server"]
+      "command": ["dart", "mcp-server"],
+      "enabled": true,
+    }
+  },
+  "agent": {
+    "build": {
+      "model": "opencode-go/minimax-m2.7"
+    },
+    "general": {
+      "model": "opencode-go/glm-5.1"
+    },
+    "explore": {
+      "model": "github-copilot/grok-code-fast-1"
+    },
+    "gsd-planner": {
+      "model": "github-copilot/claude-opus-4.6"
+    },
+    "gsd-plan-checker": {
+      "model": "github-copilot/claude-opus-4.6"
+    },
+    "gsd-phase-researcher": {
+      "model": "opencode-go/minimax-m2.7"
+    },
+    "gsd-roadmapper": {
+      "model": "github-copilot/claude-opus-4.6"
+    },
+    "gsd-project-researcher": {
+      "model": "opencode-go/minimax-m2.7"
+    },
+    "gsd-research-synthesizer": {
+      "model": "opencode-go/minimax-m2.7"
+    },
+    "gsd-codebase-mapper": {
+      "model": "opencode-go/minimax-m2.7"
+    },
+    "gsd-executor": {
+      "model": "opencode-go/glm-5.1"
+    },
+    "gsd-debugger": {
+      "model": "opencode-go/glm-5.1"
+    },
+    "gsd-verifier": {
+      "model": "github-copilot/gpt-5.4"
+    },
+    "gsd-integration-checker": {
+      "model": "github-copilot/gpt-5.4"
+    },
+    "gsd-nyquist-auditor": {
+      "model": "github-copilot/gpt-5.4"
+    },
+    "gsd-advisor-researcher": {
+      "model": "opencode-go/minimax-m2.7"
+    },
+    "gsd-assumptions-analyzer": {
+      "model": "opencode-go/glm-5.1"
+    },
+    "gsd-doc-verifier": {
+      "model": "opencode-go/kimi-k2.5"
+    },
+    "gsd-doc-writer": {
+      "model": "opencode-go/kimi-k2.5"
+    },
+    "gsd-ui-auditor": {
+      "model": "github-copilot/gemini-3.1-pro-preview"
+    },
+    "gsd-ui-checker": {
+      "model": "github-copilot/gemini-3.1-pro-preview"
+    },
+    "gsd-ui-researcher": {
+      "model": "github-copilot/gemini-3.1-pro-preview"
+    },
+    "gsd-user-profiler": {
+      "model": "opencode-go/minimax-m2.7"
     }
   }
 }
